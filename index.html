@@ -1,74 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- index.html --><!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Learn Akash</title>
   <style>
-    .live-link-container {
-      display: none;
-      margin-top: 20px;
-    }
-    .live-link-container button {
-      padding: 10px 20px;
-      margin: 10px;
-      font-size: 16px;
-      background-color: red;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .notice-container {
-      display: none;
-      background: yellow;
-      font-weight: bold;
-      padding: 10px;
-      margin-top: 10px;
-    }
-    .password-screen {
-      margin-top: 50px;
-    }
+    body { margin:0; background-color:#f0f0f0; font-family:Arial,sans-serif; text-align:center; }
+    .password-screen { margin-top:50px; }
+    .password-input { padding:10px; font-size:22px; width:300px; }
+    .password-button { padding:10px 20px; font-size:20px; background-color:#007bff; color:white; border:none; cursor:pointer; border-radius:5px; }
+    .password-button:hover { background-color:#0056b3; }
+    .error-message { color:red; margin-top:10px; display:none; }
+    .live-link-container { display:none; margin-top:20px; }
+    .live-link-container button { margin:10px; padding:10px 20px; font-size:18px; font-weight:bold; border:none; border-radius:5px; cursor:pointer; }
+    .notice-container { display:none; background:yellow; font-weight:bold; padding:10px; margin-top:10px; }
   </style>
 </head>
 <body>
-  <h1>LEARN AKASH</h1>
+  <h1>LEARN AKASH</h1>  <div class="password-screen">
+    <h2>Enter Password to Access Live Classes</h2>
+    <input type="password" id="password" class="password-input" placeholder="Enter Password">
+    <button onclick="checkPassword()" class="password-button">Submit</button>
+    <div class="error-message">Incorrect Password or Live Not Available Right Now.</div>
+  </div>  <div class="live-link-container" id="liveButtons">
+    <button onclick="window.open(getLiveLink(1), '_blank')" style="background-color:red; color:white;">🔴 LIVE CLASS 1</button>
+    <button onclick="window.open(getLiveLink(2), '_blank')" style="background-color:orange; color:white;">🔴 LIVE CLASS 2</button>
+  </div>  <div class="notice-container" id="notice">PRESS LIVE FOR LIVE CLASS 10</div>  <script>
+    const passwords = ['2580','5558','6386','3386','6665'];
 
-  <div class="password-screen">
-    <h2>Enter Password</h2>
-    <input type="password" id="password" placeholder="Enter Password">
-    <button onclick="checkPassword()">Submit</button>
-    <div id="error" style="color:red; display:none;">Wrong password</div>
-  </div>
-
-  <div class="live-link-container" id="liveButtons">
-    <button onclick="goLive1()">🔴 LIVE CLASS 1</button>
-    <button onclick="goLive2()">🔴 LIVE CLASS 2</button>
-  </div>
-
-  <div class="notice-container" id="notice">PRESS LIVE FOR LIVE CLASS 10</div>
-
-  <script>
     function checkPassword() {
-      const password = document.getElementById("password").value;
-      if (password === "80" || password === "224068123420") {
-        document.querySelector(".password-screen").style.display = "none";
-        document.getElementById("liveButtons").style.display = "block";
-        document.getElementById("notice").style.display = "block";
+      const pw = document.getElementById('password').value;
+      if (!passwords.includes(pw)) {
+        showError(); return;
+      }
+
+      const now = new Date();
+      const mins = now.getHours() * 60 + now.getMinutes();
+      const day = now.getDay();
+
+      if (day === 0) { showError(); return; } // Sunday check
+
+      const live1Time = mins >= 17 * 60 && mins <= 18 * 60 + 35;
+      const live2Time = mins >= 19 * 60 + 55 && mins <= 21 * 60 + 35;
+
+      if (live1Time || live2Time) {
+        document.querySelector('.password-screen').style.display = 'none';
+        document.getElementById('liveButtons').style.display = 'block';
+        document.getElementById('notice').style.display = 'block';
       } else {
-        document.getElementById("error").style.display = "block";
+        showError();
       }
     }
 
-    function goLive1() {
-      const encoded = btoa("https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8");
-      window.open("redirect.html?q=" + encoded, "_blank");
+    function getLiveLink(num) {
+      const url1 = 'https://rolexcoderz.netlify.app/playx/?url=https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8&id=RolexCoderZ';
+      const url2 = 'https://rolexcoderz.netlify.app/playx/?url=https://d1kw75zcv4u98c.cloudfront.net/out/v1/287810d967cc428e9bd992002e55b72c/index_1.m3u8&id=RolexCoderZ';
+      return num === 1 ? url1 : url2;
     }
 
-    function goLive2() {
-      const encoded = btoa("https://d1kw75zcv4u98c.cloudfront.net/out/v1/287810d967cc428e9bd992002e55b72c/index_1.m3u8");
-      window.open("redirect.html?q=" + encoded, "_blank");
+    function showError() {
+      document.querySelector('.error-message').style.display = 'block';
     }
-  </script>
-</body>
+  </script></body>
 </html>
