@@ -1,111 +1,74 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Learn Akash</title>
   <style>
-    body {
-      margin: 0;
-      background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
     .live-link-container {
-      background-color: #222;
-      padding: 20px 0;
       display: none;
+      margin-top: 20px;
     }
     .live-link-container button {
-      margin: 10px;
       padding: 10px 20px;
-      font-size: 18px;
-      font-weight: bold;
+      margin: 10px;
+      font-size: 16px;
+      background-color: red;
+      color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
-    .admin-button {
-      margin-top: 20px;
-      display: none;
-    }
     .notice-container {
-      background-color: yellow;
-      padding: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #000;
       display: none;
+      background: yellow;
+      font-weight: bold;
+      padding: 10px;
+      margin-top: 10px;
     }
     .password-screen {
       margin-top: 50px;
     }
-    .password-input {
-      padding: 10px;
-      font-size: 22px;
-      width: 300px;
-    }
-    .password-button {
-      padding: 10px 20px;
-      font-size: 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .password-button:hover {
-      background-color: #0056b3;
-    }
-    .error-message {
-      color: red;
-      margin-top: 10px;
-      display: none;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>LEARN AKASH</h1>
-  </header>  <div class="password-screen">
-    <h2>Enter Password to Access</h2>
-    <input type="password" id="password" class="password-input" placeholder="Enter Password">
-    <button onclick="checkPassword()" class="password-button">Submit</button>
-    <div class="error-message">Incorrect Password. Try Again!</div>
-  </div>  <div class="live-link-container">
-    <button onclick="redirectToLive1()" style="background-color: red; color: white;">🔴 LIVE CLASS 1</button>
-    <button onclick="redirectToLive2()" style="background-color: orange; color: white;">🔴 LIVE CLASS 2</button>
-  </div>  <div class="notice-container" id="notice"></div>  <div class="admin-button">
-    <button onclick="sendNoticeToViewer()">Send Notice to Viewer</button>
-  </div>  <script>
-    function checkPassword() {
-      const enteredPassword = document.getElementById("password").value;
-      const correctPassword = "80";
-      const ownerPassword = "224068123420";
+  <h1>LEARN AKASH</h1>
 
-      if (enteredPassword === correctPassword || enteredPassword === ownerPassword) {
+  <div class="password-screen">
+    <h2>Enter Password</h2>
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="checkPassword()">Submit</button>
+    <div id="error" style="color:red; display:none;">Wrong password</div>
+  </div>
+
+  <div class="live-link-container" id="liveButtons">
+    <button onclick="goLive1()">🔴 LIVE CLASS 1</button>
+    <button onclick="goLive2()">🔴 LIVE CLASS 2</button>
+  </div>
+
+  <div class="notice-container" id="notice">PRESS LIVE FOR LIVE CLASS 10</div>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById("password").value;
+      if (password === "80" || password === "224068123420") {
         document.querySelector(".password-screen").style.display = "none";
-        document.querySelector(".live-link-container").style.display = "block";
-        document.querySelector(".notice-container").style.display = "block";
-        document.querySelector(".admin-button").style.display = "block";
+        document.getElementById("liveButtons").style.display = "block";
+        document.getElementById("notice").style.display = "block";
       } else {
-        document.querySelector(".error-message").style.display = "block";
+        document.getElementById("error").style.display = "block";
       }
     }
 
-    function sendNoticeToViewer() {
-      const adminNotice = "PRESS LIVE FOR LIVE CLASS 10";
-      document.getElementById("notice").innerHTML = adminNotice;
-      document.getElementById("notice").style.display = "block";
+    function goLive1() {
+      const encoded = btoa("https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8");
+      window.open("redirect.html?q=" + encoded, "_blank");
     }
 
-    function redirectToLive1() {
-      const url1 = atob("aHR0cHM6Ly9yb2xleGNvZGVyei5uZXRsaWZ5LmFwcC9wbGF5eC8/dXJsPWh0dHBzOi8vZDJ4cW4xMnk0cW82bnIuY2xvdWRmcm9udC5uZXQvb3V0L3YxLzRkYWNjM2NjNjJlZDQwNDdiODE3YjkxNTgwZTExNTg0L2luZGV4XzEubTN1OCZpZD1Sb2xleENvZGVyWg==");
-      window.open(url1, "_blank");
+    function goLive2() {
+      const encoded = btoa("https://d1kw75zcv4u98c.cloudfront.net/out/v1/287810d967cc428e9bd992002e55b72c/index_1.m3u8");
+      window.open("redirect.html?q=" + encoded, "_blank");
     }
-
-    function redirectToLive2() {
-      const url2 = atob("aHR0cHM6Ly9yb2xleGNvZGVyei5uZXRsaWZ5LmFwcC9wbGF5eC8/dXJsPWh0dHBzOi8vZDFrdzc1emN2NHU5OGMuY2xvdWRmcm9udC5uZXQvb3V0L3YxLzI4NzgxMGQ5NjdjYzQyOGU5YmQ5OTIwMDJlNTViNzJjL2luZGV4XzEubTN1OCZpZD1Sb2xleENvZGVyWg==");
-      window.open(url2, "_blank");
-    }
-  </script></body>
-  </html>
+  </script>
+</body>
+</html>
