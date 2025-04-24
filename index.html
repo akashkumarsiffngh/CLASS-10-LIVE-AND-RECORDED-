@@ -26,29 +26,34 @@
     <button onclick="window.open(getLiveLink(2), '_blank')" style="background-color:orange; color:white;">🔴 LIVE CLASS 2</button>
   </div>  <div class="notice-container" id="notice">PRESS LIVE FOR LIVE CLASS 10</div>  <script>
     const passwords = ['2580','5558','6386','3386','6665'];
+    const masterPassword = '9999'; // Master password for maintenance access anytime
 
     function checkPassword() {
       const pw = document.getElementById('password').value;
-      if (!passwords.includes(pw)) {
-        showError(); return;
-      }
-
       const now = new Date();
       const mins = now.getHours() * 60 + now.getMinutes();
       const day = now.getDay();
 
-      if (day === 0) { showError(); return; } // Sunday check
-
       const live1Time = mins >= 17 * 60 && mins <= 18 * 60 + 35;
       const live2Time = mins >= 19 * 60 + 55 && mins <= 21 * 60 + 35;
 
-      if (live1Time || live2Time) {
-        document.querySelector('.password-screen').style.display = 'none';
-        document.getElementById('liveButtons').style.display = 'block';
-        document.getElementById('notice').style.display = 'block';
+      if (pw === masterPassword) {
+        showLive();
+        return;
+      }
+
+      if (day === 0) { showError(); return; } // Sunday check
+      if (passwords.includes(pw) && (live1Time || live2Time)) {
+        showLive();
       } else {
         showError();
       }
+    }
+
+    function showLive() {
+      document.querySelector('.password-screen').style.display = 'none';
+      document.getElementById('liveButtons').style.display = 'block';
+      document.getElementById('notice').style.display = 'block';
     }
 
     function getLiveLink(num) {
