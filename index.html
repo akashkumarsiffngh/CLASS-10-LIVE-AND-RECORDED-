@@ -374,16 +374,16 @@
                 <div class="menu-title">LEARN AKASH</div>
             </div>
             <div class="menu-item" id="home-btn">
-                <i class="fa fa-home"></i> Home
+                <i class="fa fa-home"></i>🏡Home
             </div>
             <div class="menu-item" id="info-btn">
-                <i class="fa fa-info-circle"></i> Info
+                <i class="fa fa-info-circle"></i> ℹ️Info
             </div>
             <div class="menu-item" id="contact-btn">
-                <i class="fa fa-phone"></i> Contact
+                <i class="fa fa-phone"></i> ☎️Contact
             </div>
             <div class="menu-item" id="appstore-btn">
-                <i class="fa fa-store"></i> Our Apps Store
+                <i class="fa fa-store"></i>Ⓜ️More Apps
             </div>
         </div>
         
@@ -391,17 +391,18 @@
         <div class="container">
             <!-- Subjects Grid -->
             <div class="subject-grid" id="subject-grid">
-                <div class="subject-card" data-subject="maths">MATHS</div>
+                <div class="subject-card" data-subject="maths">LIVE</div>
                 <div class="subject-card" data-subject="science">SCIENCE</div>
                 <div class="subject-card" data-subject="sst">SST</div>
-                <div class="subject-card" data-subject="live">LIVE</div>
+                <div class="subject-card" data-subject="live">MATHS</div>
             </div>
             
             <!-- Subject Content Pages -->
-            <div class="subject-content" id="maths-content">
+            <div class="subject-content" id="live-content">
                 <button class="back-btn"><i class="fa fa-home"></i> Home</button>
-                <h2>Mathematics Videos</h2>
-                <div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4351824/174473579119298296383/174473579119298296383_8296383.m3u8">Real Numbers - L2</div>
+                <!--live link below 👇 -->
+                <div class="video-item" data-live="1">Live Class 1 - Current Session</div>
+                <div class="video-item" data-live="2">Live Class 2 - Special Lecture</div>
             </div>
             
             <div class="subject-content" id="science-content">
@@ -416,12 +417,11 @@
                 <div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4352990/174481810831487880624/174481810831487880624_7880624.m3u8">Development - L2</div>
             </div>
             
-            <div class="subject-content" id="live-content">
-                <button class="back-btn"><i class="fa fa-home"></i> Home</button>
-                <h2>Live Classes</h2>
-                <div class="video-item" data-live="1">Live Class 1 - Current Session</div>
-                <div class="video-item" data-live="2">Live Class 2 - Special Lecture</div>
+            <div class="subject-content" id="Maths-content">
+                <button class="back-btn"><i class="fa fa-home"></i> Home</button>   
+               <div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4351824/174473579119298296383/174473579119298296383_8296383.m3u8">Real Number-L2</div>
             </div>
+             
             
             <!-- Info Content -->
             <div class="info-content" id="info-content">
@@ -603,11 +603,6 @@
                 const liveId = option.getAttribute('data-live');
                 let liveUrl = '';
                 
-                if (liveId === '1') {
-                    liveUrl = 'https://rolexcoderz.netlify.app/playx/?url=https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8&id=Ro';
-                } else if (liveId === '2') {
-                    liveUrl = 'https://rolexcoderz.netlify.app/playx/?url=https://d1kw75zcv4u98c.cloudfront.net/out/v1/287810d967cc428e9bd992002e55b72c/index_1.m3u8&id=Ro';
-                }
                 
                 // Open in same page to hide URL
                 window.location.href = liveUrl;
