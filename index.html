@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>❤️‍🔥LEARN AKASH❤️‍🔥</title>
+    <title>LEARN AKASH</title>
     <style>
         * {
             margin: 0;
@@ -317,6 +317,41 @@
             display: none !important;
         }
         
+        /* Live Stream Styles */
+        .live-stream-container {
+            margin-top: 20px;
+            background: #000;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .live-player {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .live-player iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .close-live-btn {
+            padding: 10px 15px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .close-live-btn:hover {
+            background-color: #cc0000;
+        }
+        
         /* Font Awesome for icons */
         .fa {
             display: inline-block;
@@ -349,10 +384,10 @@
     <!-- Password Protection -->
     <div class="password-protection">
         <div class="password-box">
-            <h2>ENTER KEY🔐</h2>
+            <h2>Enter Password to Access</h2>
             <input type="password" id="password-input" placeholder="Enter password">
             <button id="password-submit">Submit</button>
-            <p class="error" id="password-error">PASSWORD GALAT HAI🫣</p>
+            <p class="error" id="password-error">Incorrect password. Please try again.</p>
         </div>
     </div>
     
@@ -362,7 +397,7 @@
             <button class="menu-btn">|||</button>
             <div class="logo-container">
                 <img src="https://raw.githubusercontent.com/akashkumarsiffngh/My-imag/refs/heads/main/file_00000000eb7461f883fd1156830f5780.png" alt="LEARN AKASH Logo" class="logo">
-                <div class="app-name">❤️‍🔥LEARN AKASH❤️‍🔥</div>
+                <div class="app-name">LEARN AKASH</div>
             </div>
         </header>
         
@@ -371,19 +406,19 @@
             <span class="close-btn">&times;</span>
             <div class="menu-header">
                 <img src="https://raw.githubusercontent.com/akashkumarsiffngh/My-imag/refs/heads/main/file_00000000eb7461f883fd1156830f5780.png" alt="Menu Logo" class="menu-logo">
-                <div class="menu-title">❤️‍🔥LEARN AKASH❤️‍🔥</div>
+                <div class="menu-title">LEARN AKASH</div>
             </div>
             <div class="menu-item" id="home-btn">
-                <i class="fa fa-home"></i>🏡Home
+                <i class="fa fa-home"></i> Home
             </div>
             <div class="menu-item" id="info-btn">
-                <i class="fa fa-info-circle"></i>ℹ️Info
+                <i class="fa fa-info-circle"></i> Info
             </div>
             <div class="menu-item" id="contact-btn">
-                <i class="fa fa-phone"></i>☎️Contact
+                <i class="fa fa-phone"></i> Contact
             </div>
             <div class="menu-item" id="appstore-btn">
-                <i class="fa fa-store"></i>👏More Apps
+                <i class="fa fa-store"></i> Our Apps Store
             </div>
         </div>
         
@@ -400,78 +435,41 @@
             <!-- Subject Content Pages -->
             <div class="subject-content" id="maths-content">
                 <button class="back-btn"><i class="fa fa-home"></i> Home</button>
-               
-                
-                <!--MATHS VIDEO LINK BELOW-->
-
-                
+                <h2>Mathematics Videos</h2>
                 <div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4351824/174473579119298296383/174473579119298296383_8296383.m3u8">Real Numbers - L2</div>
             </div>
             
             <div class="subject-content" id="science-content">
                 <button class="back-btn"><i class="fa fa-home"></i> Home</button>
-              
-                
-                <!--SCIENCE VIDEO LINK BELOW-->
-                
+                <h2>Science Videos</h2>
                 <div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4352723/174480784354101097666/174480784354101097666_1097666.m3u8">Chemical Reactions and Equations</div>
             </div>
             
             <div class="subject-content" id="sst-content">
                 <button class="back-btn"><i class="fa fa-home"></i> Home</button>
-               
-                
-                
-                <!--SST VIDEO LINK BELOW-->
-                
+                <h2>Social Studies Videos</h2>
                 <div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4352990/174481810831487880624/174481810831487880624_7880624.m3u8">Development - L2</div>
             </div>
             
-            <!-- Previous HTML remains the same until the live-content section -->
-
-<div class="subject-content" id="live-content">
-    <button class="back-btn"><i class="fa fa-home"></i> Home</button>
-    <h2>Live Classes</h2>
-    <div class="live-option" data-live="1">Live Class 1 - Current Session</div>
-    <div class="live-option" data-live="2">Live Class 2 - Special Lecture</div>
-    
-    <!-- Add this new container for live stream -->
-    <div class="live-stream-container" id="live-stream-container" style="display: none;">
-        <div class="live-player" id="live-player">
-            <iframe id="live-iframe" style="width:100%; height:400px; border:none;"></iframe>
-        </div>
-        <button class="close-live-btn">Close Live</button>
-    </div>
-</div>
-
-<!-- Add this CSS -->
-<style>
-    .live-stream-container {
-        margin-top: 20px;
-        background: #000;
-        padding: 10px;
-        border-radius: 8px;
-    }
-    
-    .close-live-btn {
-        padding: 10px 15px;
-        background-color: #ff0000;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        margin-top: 10px;
-        cursor: pointer;
-    }
-    
-    .close-live-btn:hover {
-        background-color: #cc0000;
-    }
-</style>
+            <!-- Live Section with Embedded Player -->
+            <div class="subject-content" id="live-content">
+                <button class="back-btn"><i class="fa fa-home"></i> Home</button>
+                <h2>Live Classes</h2>
+                <div class="live-option" data-live="1">Live Class 1 - Current Session</div>
+                <div class="live-option" data-live="2">Live Class 2 - Special Lecture</div>
+                
+                <div class="live-stream-container" id="live-stream-container">
+                    <div class="live-player">
+                        <iframe id="live-iframe" allowfullscreen></iframe>
+                    </div>
+                    <button class="close-live-btn">Close Live Stream</button>
+                </div>
+            </div>
             
             <!-- Info Content -->
             <div class="info-content" id="info-content">
                 <h3>About</h3>
-                <p>All content of next toppers available At 🆓</p>
+                <p>Created by Akash Singh and this is official app. Similar to Next Toppers.</p>
             </div>
             
             <!-- Contact Content -->
@@ -483,9 +481,9 @@
             
             <!-- App Store Content -->
             <div class="appstore-content" id="appstore-content">
-                <h3>MORE</h3>
+                <h3>Our Apps Store</h3>
                 <p>Check out our other applications:</p>
-                <a href="#" class="app-link" id="appstore-link">DOWNLOAD</a>
+                <a href="#" class="app-link" id="appstore-link">Download App Store</a>
             </div>
         </div>
         
@@ -499,7 +497,6 @@
             </div>
         </div>
     </div>
-
         <script>
         // Password Protection
         const passwordProtection = document.querySelector('.password-protection');
@@ -518,7 +515,7 @@
                 passwordError.style.display = 'block';
             }
         });
-        
+
         // Menu Toggle
         const menu = document.querySelector('.menu');
         const closeBtn = document.querySelector('.close-btn');
@@ -530,8 +527,8 @@
         closeBtn.addEventListener('click', () => {
             menu.classList.remove('active');
         });
-        
-        // Menu Items
+
+        // Menu Navigation
         const homeBtn = document.getElementById('home-btn');
         const infoBtn = document.getElementById('info-btn');
         const contactBtn = document.getElementById('contact-btn');
@@ -542,53 +539,44 @@
         const appstoreLink = document.getElementById('appstore-link');
         const subjectGrid = document.getElementById('subject-grid');
         
-        homeBtn.addEventListener('click', () => {
-            showSubjectGrid();
-            menu.classList.remove('active');
-        });
-        
-        infoBtn.addEventListener('click', () => {
-            hideAllContents();
-            subjectGrid.classList.add('hidden');
-            infoContent.style.display = 'block';
-            menu.classList.remove('active');
-        });
-        
-        contactBtn.addEventListener('click', () => {
-            hideAllContents();
-            subjectGrid.classList.add('hidden');
-            contactContent.style.display = 'block';
-            menu.classList.remove('active');
-        });
-        
-        appstoreBtn.addEventListener('click', () => {
-            hideAllContents();
-            subjectGrid.classList.add('hidden');
-            appstoreContent.style.display = 'block';
-            menu.classList.remove('active');
-        });
-        
-        function hideAllContents() {
-            infoContent.style.display = 'none';
-            contactContent.style.display = 'none';
-            appstoreContent.style.display = 'none';
-            document.getElementById('maths-content').style.display = 'none';
-            document.getElementById('science-content').style.display = 'none';
-            document.getElementById('sst-content').style.display = 'none';
-            document.getElementById('live-content').style.display = 'none';
-        }
-        
+        homeBtn.addEventListener('click', showSubjectGrid);
+        infoBtn.addEventListener('click', showInfo);
+        contactBtn.addEventListener('click', showContact);
+        appstoreBtn.addEventListener('click', showAppStore);
+
         function showSubjectGrid() {
             hideAllContents();
             subjectGrid.classList.remove('hidden');
+            menu.classList.remove('active');
         }
-        
-        // App Store Link
-        appstoreLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'https://github.com/akashkumarsiffngh/APP-STORE/releases/download/V1.0/_AS_STORE_18839133.apk';
-        });
-        
+
+        function showInfo() {
+            hideAllContents();
+            infoContent.style.display = 'block';
+            menu.classList.remove('active');
+        }
+
+        function showContact() {
+            hideAllContents();
+            contactContent.style.display = 'block';
+            menu.classList.remove('active');
+        }
+
+        function showAppStore() {
+            hideAllContents();
+            appstoreContent.style.display = 'block';
+            menu.classList.remove('active');
+        }
+
+        function hideAllContents() {
+            // Hide all content sections
+            document.querySelectorAll('.subject-content, .info-content, .contact-content, .appstore-content').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.getElementById('live-stream-container').style.display = 'none';
+            subjectGrid.classList.add('hidden');
+        }
+
         // Subject Navigation
         const subjectCards = document.querySelectorAll('.subject-card');
         const backBtns = document.querySelectorAll('.back-btn');
@@ -596,27 +584,19 @@
         subjectCards.forEach(card => {
             card.addEventListener('click', () => {
                 const subject = card.getAttribute('data-subject');
-                hideAllContents();
-                subjectGrid.classList.add('hidden');
-                
-                if (subject === 'maths') {
-                    document.getElementById('maths-content').style.display = 'block';
-                } else if (subject === 'science') {
-                    document.getElementById('science-content').style.display = 'block';
-                } else if (subject === 'sst') {
-                    document.getElementById('sst-content').style.display = 'block';
-                } else if (subject === 'live') {
-                    document.getElementById('live-content').style.display = 'block';
-                }
+                showSubjectContent(subject);
             });
         });
-        
+
         backBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                showSubjectGrid();
-            });
+            btn.addEventListener('click', showSubjectGrid);
         });
-        
+
+        function showSubjectContent(subject) {
+            hideAllContents();
+            document.getElementById(`${subject}-content`).style.display = 'block';
+        }
+
         // Video Player
         const videoItems = document.querySelectorAll('.video-item');
         const videoPlayerContainer = document.getElementById('video-player');
@@ -633,64 +613,48 @@
                 }
             });
         });
-        
+
         closePlayer.addEventListener('click', () => {
             videoPlayerContainer.style.display = 'none';
             mainVideoPlayer.pause();
             mainVideoPlayer.src = '';
-        })
+        });
 
-// Live Options
-const liveOptions = document.querySelectorAll('[data-live]');
-const liveStreamContainer = document.getElementById('live-stream-container');
-const liveIframe = document.getElementById('live-iframe');
-const closeLiveBtn = document.querySelector('.close-live-btn');
+        // Live Stream Handling
+        const liveOptions = document.querySelectorAll('.live-option');
+        const liveStreamContainer = document.getElementById('live-stream-container');
+        const liveIframe = document.getElementById('live-iframe');
+        const closeLiveBtn = document.querySelector('.close-live-btn');
 
-// Map of live stream URLs
-const liveStreams = {
-    '1': 'https://rolexcoderz.netlify.app/playx/?url=https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8&id=Ro',
-    '2': 'https://rolexcoderz.netlify.app/playx/?url=https://d1kw75zcv4u98c.cloudfront.net/out/v1/287810d967cc428e9bd992002e55b72c/index_1.m3u8&id=Ro'
-};
+        const liveStreamUrls = {
+            '1': 'https://rolexcoderz.netlify.app/playx/?url=https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8&id=Ro',
+            '2': 'https://rolexcoderz.netlify.app/playx/?url=https://d1kw75zcv4u98c.cloudfront.net/out/v1/287810d967cc428e9bd992002e55b72c/index_1.m3u8&id=Ro'
+        };
 
-liveOptions.forEach(option => {
-    option.addEventListener('click', () => {
-        const liveId = option.getAttribute('data-live');
-        const liveUrl = liveStreams[liveId];
-        
-        // Hide all other content
-        hideAllContents();
-        
-        // Show the live stream container
-        liveStreamContainer.style.display = 'block';
-        
-        // Set the iframe source
-        liveIframe.src = liveUrl;
-    });
-});
+        liveOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const liveId = option.getAttribute('data-live');
+                playLiveStream(liveId);
+            });
+        });
 
-closeLiveBtn.addEventListener('click', () => {
-    // Stop the live stream
-    liveIframe.src = '';
-    
-    // Hide the live container
-    liveStreamContainer.style.display = 'none';
-    
-    // Show the live options again
-    document.getElementById('live-content').style.display = 'block';
-});
+        function playLiveStream(liveId) {
+            const streamUrl = liveStreamUrls[liveId];
+            liveIframe.src = streamUrl;
+            liveStreamContainer.style.display = 'block';
+        }
 
-// Update the hideAllContents function to include the live stream container
-function hideAllContents() {
-    infoContent.style.display = 'none';
-    contactContent.style.display = 'none';
-    appstoreContent.style.display = 'none';
-    document.getElementById('maths-content').style.display = 'none';
-    document.getElementById('science-content').style.display = 'none';
-    document.getElementById('sst-content').style.display = 'none';
-    document.getElementById('live-content').style.display = 'none';
-    liveStreamContainer.style.display = 'none';
-}
-        
+        closeLiveBtn.addEventListener('click', () => {
+            liveIframe.src = '';
+            liveStreamContainer.style.display = 'none';
+        });
+
+        // App Store Link
+        appstoreLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'https://github.com/akashkumarsiffngh/APP-STORE/releases/download/V1.0/_AS_STORE_18839133.apk';
+        });
+
         // Block external URLs except for the app store link
         document.addEventListener('click', (e) => {
             if (e.target.tagName === 'A' && e.target.id !== 'appstore-link') {
