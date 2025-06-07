@@ -318,6 +318,43 @@
         }
         
         /* Live Stream Styles */
+        .live-option-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .live-option-box {
+            background-color: orange;
+            border: 3px solid #2240aa;
+            border-radius: 5px;
+            padding: 15px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .live-option-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .live-option-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .live-option-desc {
+            font-size: 16px;
+        }
+        
         .live-stream-container {
             margin-top: 20px;
             background: #000;
@@ -451,12 +488,22 @@
                 <div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4352990/174481810831487880624/174481810831487880624_7880624.m3u8">Development - L2</div>
             </div>
             
-            <!-- Live Section with Embedded Player -->
+            <!-- Live Section with Styled Options -->
             <div class="subject-content" id="live-content">
                 <button class="back-btn"><i class="fa fa-home"></i> Home</button>
                 <h2>Live Classes</h2>
-                <div class="live-option" data-live="1">Live Class 1 - Current Session</div>
-                <div class="live-option" data-live="2">Live Class 2 - Special Lecture</div>
+                
+                <div class="live-option-container">
+                    <div class="live-option-box" data-live="1">
+                        <div class="live-option-title">Live Class 1</div>
+                        <div class="live-option-desc">Current Session</div>
+                    </div>
+                    
+                    <div class="live-option-box" data-live="2">
+                        <div class="live-option-title">Live Class 2</div>
+                        <div class="live-option-desc">Special Lecture</div>
+                    </div>
+                </div>
                 
                 <div class="live-stream-container" id="live-stream-container">
                     <div class="live-player">
@@ -464,9 +511,9 @@
                     </div>
                     <button class="close-live-btn">Close Live Stream</button>
                 </div>
-            </div>
-            
-            <!-- Info Content -->
+                                          </div>
+
+                        <!-- Info Content -->
             <div class="info-content" id="info-content">
                 <h3>About</h3>
                 <p>Created by Akash Singh and this is official app. Similar to Next Toppers.</p>
@@ -497,7 +544,8 @@
             </div>
         </div>
     </div>
-        <script>
+
+    <script>
         // Password Protection
         const passwordProtection = document.querySelector('.password-protection');
         const passwordInput = document.getElementById('password-input');
@@ -515,7 +563,7 @@
                 passwordError.style.display = 'block';
             }
         });
-
+        
         // Menu Toggle
         const menu = document.querySelector('.menu');
         const closeBtn = document.querySelector('.close-btn');
@@ -527,7 +575,7 @@
         closeBtn.addEventListener('click', () => {
             menu.classList.remove('active');
         });
-
+        
         // Menu Navigation
         const homeBtn = document.getElementById('home-btn');
         const infoBtn = document.getElementById('info-btn');
@@ -621,7 +669,7 @@
         });
 
         // Live Stream Handling
-        const liveOptions = document.querySelectorAll('.live-option');
+        const liveOptionBoxes = document.querySelectorAll('.live-option-box');
         const liveStreamContainer = document.getElementById('live-stream-container');
         const liveIframe = document.getElementById('live-iframe');
         const closeLiveBtn = document.querySelector('.close-live-btn');
@@ -631,9 +679,9 @@
             '2': 'https://rolexcoderz.netlify.app/playx/?url=https://d1kw75zcv4u98c.cloudfront.net/out/v1/287810d967cc428e9bd992002e55b72c/index_1.m3u8&id=Ro'
         };
 
-        liveOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                const liveId = option.getAttribute('data-live');
+        liveOptionBoxes.forEach(box => {
+            box.addEventListener('click', () => {
+                const liveId = box.getAttribute('data-live');
                 playLiveStream(liveId);
             });
         });
