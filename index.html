@@ -1,1 +1,895 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️‍🔥LEARN AKASH❤️‍🔥</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #fff;
+            min-height: 100vh;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff5722;
+            box-shadow: 0 0 15px rgba(255, 87, 34, 0.4);
+        }
+        
+        .app-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ff8a00, #da1b60);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            color: #ffcc70;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        .current-time {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #4cffa3;
+        }
+        
+        .schedule-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 20px 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #ffcc70;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #ff8a00, #da1b60);
+            border-radius: 2px;
+        }
+        
+        .timetable {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background: rgba(20, 20, 40, 0.7);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            font-size: 0.9rem;
+        }
+        
+        .timetable th {
+            background: linear-gradient(135deg, #2240aa, #1a3377);
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+        
+        .timetable td {
+            padding: 14px 8px;
+            text-align: center;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timetable tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .timetable tr:nth-child(even) {
+            background: rgba(30, 30, 60, 0.5);
+        }
+        
+        .timetable tr:hover td {
+            background: rgba(50, 50, 90, 0.7);
+        }
+        
+        .day-cell {
+            font-weight: 700;
+            color: #ffcc70;
+            text-align: left;
+            padding-left: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .subject-cell {
+            position: relative;
+        }
+        
+        .subject-name {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-weight: 600;
+            min-width: 80px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .subject-name:hover {
+            transform: translateY(-2px);
+        }
+        
+        .maths .subject-name {
+            background: linear-gradient(135deg, #ff5722, #e64a19);
+            box-shadow: 0 3px 10px rgba(230, 74, 25, 0.3);
+        }
+        
+        .science .subject-name {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+        }
+        
+        .sst .subject-name {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+        }
+        
+        .live-indicator {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 18px;
+            height: 18px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+        }
+        
+        .live-text {
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff0000;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 12px;
+            animation: blink 1.5s infinite;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+            text-transform: uppercase;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .current-day {
+            background: rgba(255, 215, 0, 0.2) !important;
+            position: relative;
+        }
+        
+        .current-day::after {
+            content: "TODAY";
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            background: gold;
+            color: #1a2a6c;
+            font-size: 0.6rem;
+            font-weight: bold;
+            padding: 1px 6px;
+            border-radius: 8px;
+        }
+        
+        .note {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-left: 3px solid #ff5722;
+        }
+        
+        .note strong {
+            color: #ffcc70;
+        }
+        
+        .live-now-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .live-now-box {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff0000, #b30000);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 8px 0;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 0, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
+        }
+        
+        .live-class-info {
+            font-size: 1rem;
+            margin: 12px 0;
+            color: #fff;
+            line-height: 1.4;
+        }
+        
+        .join-button {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .join-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(76, 175, 80, 0.6);
+        }
+        
+        .join-button i {
+            margin-right: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0 15px;
+            color: #ccc;
+            font-size: 0.8rem;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Live stream overlay */
+        .live-stream-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .live-stream-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .stream-header {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .stream-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .stream-title i {
+            color: #ff0000;
+            margin-right: 10px;
+            animation: blink 1.5s infinite;
+        }
+        
+        .close-stream {
+            background: #ff5722;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .close-stream:hover {
+            transform: rotate(90deg);
+            background: #ff0000;
+        }
+        
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            position: relative;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .stream-controls {
+            width: 100%;
+            max-width: 800px;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px;
+            }
+            
+            header {
+                padding: 12px 0;
+            }
+            
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .app-name {
+                font-size: 1.5rem;
+            }
+            
+            .tagline {
+                font-size: 0.9rem;
+            }
+            
+            .current-time {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .timetable {
+                font-size: 0.8rem;
+            }
+            
+            .timetable th {
+                padding: 10px 5px;
+                font-size: 0.8rem;
+            }
+            
+            .timetable td {
+                padding: 12px 5px;
+            }
+            
+            .day-cell {
+                padding-left: 10px;
+                font-size: 0.85rem;
+            }
+            
+            .subject-name {
+                padding: 5px 10px;
+                min-width: 70px;
+                font-size: 0.8rem;
+            }
+            
+            .live-indicator {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .note {
+                padding: 12px;
+                font-size: 0.85rem;
+            }
+            
+            .live-now-container {
+                padding: 15px;
+            }
+            
+            .live-now-box {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            
+            .live-class-info {
+                font-size: 0.95rem;
+            }
+            
+            .join-button {
+                padding: 8px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .stream-header, .stream-controls {
+                padding: 10px 15px;
+            }
+            
+            .stream-title {
+                font-size: 1rem;
+            }
+            
+            .close-stream {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .app-name {
+                font-size: 1.3rem;
+            }
+            
+            .subject-name {
+                min-width: 65px;
+                font-size: 0.75rem;
+                padding: 4px 8px;
+            }
+        }
+        
+        /* Decorative background elements */
+        .bg-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        .bg-1 {
+            width: 300px;
+            height: 300px;
+            background: #ff5722;
+            top: -150px;
+            right: -150px;
+        }
+        
+        .bg-2 {
+            width: 200px;
+            height: 200px;
+            background: #2196f3;
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .bg-3 {
+            width: 150px;
+            height: 150px;
+            background: #4caf50;
+            top: 30%;
+            left: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-elements">
+        <div class="bg-element bg-1"></div>
+        <div class="bg-element bg-2"></div>
+        <div class="bg-element bg-3"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/akashkumarsiffngh/My-imag/refs/heads/main/file_00000000eb7461f883fd1156830f5780.png" alt="LEARN AKASH Logo" class="logo">
+                <div class="app-name">❤️‍🔥LEARN AKASH❤️‍🔥</div>
+            </div>
+            <div class="tagline">Aarambh Batch</div>
+            <div class="current-time" id="current-time">Loading current time...</div>
+        </header>
+        
+        <div class="schedule-container">
+            <h2 class="section-title">Weekly Class Schedule</h2>
+            <table class="timetable">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>5:00 PM</th>
+                        <th>8:00 PM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="monday">
+                        <td class="day-cell">Monday</td>
+                        <td class="subject-cell sst"><div class="subject-name">SST</div></td>
+                        <td class="subject-cell maths"><div class="subject-name">Maths</div></td>
+                    </tr>
+                    <tr id="tuesday">
+                        <td class="day-cell">Tuesday</td>
+                        <td class="subject-cell sst"><div class="subject-name">SST</div></td>
+                        <td class="subject-cell maths"><div class="subject-name">Maths</div></td>
+                    </tr>
+                    <tr id="wednesday">
+                        <td class="day-cell">Wednesday</td>
+                        <td class="subject-cell science"><div class="subject-name">Science</div></td>
+                        <td class="subject-cell sst"><div class="subject-name">SST</div></td>
+                    </tr>
+                    <tr id="thursday">
+                        <td class="day-cell">Thursday</td>
+                        <td class="subject-cell science"><div class="subject-name">Science</div></td>
+                        <td class="subject-cell sst"><div class="subject-name">SST</div></td>
+                    </tr>
+                    <tr id="friday">
+                        <td class="day-cell">Friday</td>
+                        <td class="subject-cell science"><div class="subject-name">Science</div></td>
+                        <td class="subject-cell maths"><div class="subject-name">Maths</div></td>
+                    </tr>
+                    <tr id="saturday">
+                        <td class="day-cell">Saturday</td>
+                        <td class="subject-cell science"><div class="subject-name">Science</div></td>
+                        <td class="subject-cell maths"><div class="subject-name">Maths</div></td>
+                    </tr>
+                    <tr id="sunday">
+                        <td class="day-cell">Sunday</td>
+                        <td class="subject-cell" colspan="2"><div class="subject-name" style="background: #9e9e9e; color: #333; font-size: 0.9rem;">No Classes</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="note">
+                <p><strong>Note:</strong> Every 5th class will be a Doubt solving class. Please check the app for specific doubt class schedules.</p>
+            </div>
+        </div>
+        
+        <div class="live-now-container" id="live-now-container">
+            <div class="live-now-box">
+                <i class="fas fa-circle"></i> LIVE NOW
+            </div>
+            <div class="live-class-info" id="live-class-info">No live classes at the moment</div>
+            <button class="join-button" id="join-button">
+                <i class="fas fa-video"></i> JOIN CLASS
+            </button>
+        </div>
+        
+        <footer>
+            <p>© 2025 ❤️‍🔥LEARN AKASH❤️‍🔥 | Official Aarambh Batch Schedule</p>
+            <p>Contact: +91xyz| akashkumarsinghgahiri@gmail.com</p>
+        </footer>
+    </div>
+    
+    <!-- Live stream overlay -->
+    <div class="live-stream-overlay" id="stream-overlay">
+        <div class="stream-header">
+            <div class="stream-title" id="stream-title">
+                <i class="fas fa-circle"></i> <span id="stream-subject">Live Class</span>
+            </div>
+            <button class="close-stream" id="close-stream">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="video-container">
+            <iframe id="live-player" allowfullscreen></iframe>
+        </div>
+        <div class="stream-controls">
+            <button class="join-button" id="fullscreen-btn">
+                <i class="fas fa-expand"></i> FULLSCREEN
+            </button>
+        </div>
+    </div>
 
+    <script>
+        // Live stream URLs (not visible to users)
+        const liveStreamUrls = {
+            'Science': 'https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8',
+            'SST': 'https://dga9kme080o0w.cloudfront.net/out/v1/90ab1354cfcd4c5b83cf78a87d96041e/index_1.m3u8',
+            'Maths': 'https://dga9kme080o0w.cloudfront.net/out/v1/5c7cfedca3df4fc99ea383b5f2e6a7a8/index_1.m3u8'
+        };
+        
+        // Current live stream variables
+        let currentLiveStreamUrl = null;
+        let currentLiveSubject = null;
+        const streamOverlay = document.getElementById('stream-overlay');
+        const livePlayer = document.getElementById('live-player');
+        const streamTitle = document.getElementById('stream-subject');
+        
+        // Function to update current time
+        function updateCurrentTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            const timeString = now.toLocaleDateString('en-US', options);
+            document.getElementById('current-time').textContent = timeString;
+            
+            // Highlight current day
+            const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            const currentDay = days[now.getDay()];
+            
+            // Remove highlight from all days
+            days.forEach(day => {
+                document.getElementById(day).classList.remove('current-day');
+            });
+            
+            // Highlight current day
+            if (currentDay !== 'sunday') {
+                document.getElementById(currentDay).classList.add('current-day');
+            }
+            
+            // Check for live classes
+            checkLiveClasses(now);
+        }
+        
+        // Function to check for live classes
+        function checkLiveClasses(now) {
+            const hour = now.getHours();
+            const minutes = now.getMinutes();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            const liveNowContainer = document.getElementById('live-now-container');
+            const liveClassInfo = document.getElementById('live-class-info');
+            const joinButton = document.getElementById('join-button');
+            
+            // Reset all live indicators
+            document.querySelectorAll('.live-indicator, .live-text').forEach(el => el.remove());
+            
+            // Reset current live stream
+            currentLiveStreamUrl = null;
+            currentLiveSubject = null;
+            
+            // Check if it's Sunday
+            if (day === 0) {
+                liveClassInfo.textContent = "No classes today - Enjoy your Sunday!";
+                joinButton.style.display = 'none';
+                return;
+            }
+            
+            // Class time slots
+            const classTimes = [
+                { start: 17, end: 18.5 }, // 5:00 PM to 6:30 PM
+                { start: 20, end: 21.5 }  // 8:00 PM to 9:30 PM
+            ];
+            
+            // Determine today's subjects
+            let subjects = [];
+            switch(day) {
+                case 1: // Monday
+                    subjects = ['SST', 'Maths'];
+                    break;
+                case 2: // Tuesday
+                    subjects = ['SST', 'Maths'];
+                    break;
+                case 3: // Wednesday
+                    subjects = ['Science', 'SST'];
+                    break;
+                case 4: // Thursday
+                    subjects = ['Science', 'SST'];
+                    break;
+                case 5: // Friday
+                    subjects = ['Science', 'Maths'];
+                    break;
+                case 6: // Saturday
+                    subjects = ['Science', 'Maths'];
+                    break;
+            }
+            
+            // Check each slot
+            classTimes.forEach((slot, index) => {
+                const timeDecimal = hour + (minutes / 60);
+                const isLive = timeDecimal >= slot.start && timeDecimal < slot.end;
+                
+                if (isLive) {
+                    currentLiveSubject = subjects[index];
+                    currentLiveStreamUrl = liveStreamUrls[currentLiveSubject];
+                    
+                    // Add live indicator to the corresponding cell
+                    const rowId = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'][day];
+                    const cellIndex = index + 1; // Skip day cell
+                    const cell = document.querySelector(`#${rowId} td:nth-child(${cellIndex + 1})`);
+                    
+                    // Create and add live indicator
+                    const liveIndicator = document.createElement('div');
+                    liveIndicator.className = 'live-indicator';
+                    cell.appendChild(liveIndicator);
+                    
+                    // Create and add live text
+                    const liveText = document.createElement('div');
+                    liveText.className = 'live-text';
+                    liveText.textContent = 'Live';
+                    cell.appendChild(liveText);
+                }
+            });
+            
+            // Update live now section
+            if (currentLiveSubject) {
+                const slotName = classTimes[0].start === 17 ? "5:00 PM" : "8:00 PM";
+                liveClassInfo.textContent = `${currentLiveSubject} class is LIVE NOW (${slotName} slot)`;
+                joinButton.style.display = 'block';
+            } else {
+                liveClassInfo.textContent = "No live classes at the moment";
+                joinButton.style.display = 'none';
+            }
+        }
+        
+        // Function to open live stream
+        function openLiveStream() {
+            if (currentLiveSubject && currentLiveStreamUrl) {
+                // Update stream title
+                streamTitle.textContent = `${currentLiveSubject} Live Class`;
+                
+                // Set the player source
+                livePlayer.src = currentLiveStreamUrl;
+                
+                // Show the overlay
+                streamOverlay.classList.add('active');
+            }
+        }
+        
+        // Function to close live stream
+        function closeLiveStream() {
+            // Pause the player and reset source
+            livePlayer.src = '';
+            
+            // Hide the overlay
+            streamOverlay.classList.remove('active');
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCurrentTime();
+            setInterval(updateCurrentTime, 1000);
+            
+            // Join button functionality
+            document.getElementById('join-button').addEventListener('click', openLiveStream);
+            
+            // Close stream button
+            document.getElementById('close-stream').addEventListener('click', closeLiveStream);
+            
+            // Fullscreen button
+            document.getElementById('fullscreen-btn').addEventListener('click', () => {
+                if (livePlayer.requestFullscreen) {
+                    livePlayer.requestFullscreen();
+                } else if (livePlayer.mozRequestFullScreen) {
+                    livePlayer.mozRequestFullScreen();
+                } else if (livePlayer.webkitRequestFullscreen) {
+                    livePlayer.webkitRequestFullscreen();
+                } else if (livePlayer.msRequestFullscreen) {
+                    livePlayer.msRequestFullscreen();
+                }
+            });
+            
+            // Close stream when clicking outside the player
+            streamOverlay.addEventListener('click', (e) => {
+                if (e.target === streamOverlay) {
+                    closeLiveStream();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
