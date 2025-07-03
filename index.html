@@ -1,840 +1,1321 @@
-
-
-
-
-
-<!--AJJ SE NO LIVE UPPER WALA HAI-->
-
-
-<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>❤️‍🔥LEARN AKASH❤️‍🔥</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #fff;
+            min-height: 100vh;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
         }
         
-        .password-protection {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        /* Login Screen */
+        .login-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .login-header {
+            margin-bottom: 25px;
+        }
+        
+        .login-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #ff8a00, #da1b60);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .login-header p {
+            color: #ffcc70;
+            font-size: 1.1rem;
         }
         
         .password-box {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .password-box h2 {
-            margin-bottom: 20px;
-            color: #2240aa;
+            margin: 20px 0;
         }
         
         .password-box input {
-            padding: 10px;
-            width: 200px;
-            margin-bottom: 15px;
-            border: 2px solid #2240aa;
-            border-radius: 5px;
-            font-size: 16px;
+            width: 100%;
+            padding: 15px;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 15px 0;
+            outline: none;
+        }
+        
+        .password-box input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
         }
         
         .password-box button {
-            padding: 10px 20px;
-            background-color: #2240aa;
+            background: linear-gradient(to right, #ff6b81, #ff4757);
             color: white;
             border: none;
-            border-radius: 5px;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
             cursor: pointer;
-            font-size: 16px;
+            margin: 15px 0;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 107, 129, 0.4);
         }
         
         .password-box button:hover {
-            background-color: #1a3377;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 129, 0.6);
         }
         
-        .error {
-            color: red;
+        .error-message {
+            color: #ff6b81;
+            height: 25px;
             margin-top: 10px;
+        }
+        
+        /* Main App */
+        .app-container {
             display: none;
         }
         
         header {
-            background-color: #2240aa;
-            color: white;
-            padding: 15px 0;
             text-align: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
+            z-index: 10;
         }
         
         .logo-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
+            gap: 10px;
             margin-bottom: 10px;
         }
         
         .app-name {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ff8a00, #da1b60);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
         
-        .menu-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: white;
+        .tagline {
+            font-size: 1rem;
+            color: #ffcc70;
+            margin-top: 8px;
+            font-weight: 500;
         }
         
-        .menu {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 300px;
-            height: 100%;
-            background-color: white;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-            transition: right 0.3s ease;
-            padding: 20px;
-            overflow-y: auto;
+        .current-time {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #4cffa3;
         }
         
-        .menu.active {
-            right: 0;
-        }
-        
-        .menu-header {
-            display: flex;
-            align-items: center;
+        .schedule-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 20px 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #ffcc70;
+            position: relative;
             padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
         }
         
-        .menu-logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        
-        .menu-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #2240aa;
-        }
-        
-        .menu-item {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-        
-        .menu-item:hover {
-            color: #2240aa;
-        }
-        
-        .menu-item i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-        
-        .close-btn {
+        .section-title::after {
+            content: '';
             position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 20px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #ff8a00, #da1b60);
+            border-radius: 2px;
+        }
+        
+        .timetable {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background: rgba(20, 20, 40, 0.7);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            font-size: 0.9rem;
+        }
+        
+        .timetable th {
+            background: linear-gradient(135deg, #2240aa, #1a3377);
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+        
+        .timetable td {
+            padding: 14px 8px;
+            text-align: center;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timetable tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .timetable tr:nth-child(even) {
+            background: rgba(30, 30, 60, 0.5);
+        }
+        
+        .timetable tr:hover td {
+            background: rgba(50, 50, 90, 0.7);
+        }
+        
+        .day-cell {
+            font-weight: 700;
+            color: #ffcc70;
+            text-align: left;
+            padding-left: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .subject-cell {
+            position: relative;
+        }
+        
+        .subject-name {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-weight: 600;
+            min-width: 80px;
+            font-size: 0.85rem;
             cursor: pointer;
-            color: #777;
+            transition: all 0.3s;
         }
         
-        .container {
-            padding: 20px;
+        .subject-name:hover {
+            transform: translateY(-2px);
         }
         
-        .subject-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        .maths .subject-name {
+            background: linear-gradient(135deg, #ff5722, #e64a19);
+            box-shadow: 0 3px 10px rgba(230, 74, 25, 0.3);
         }
         
-        .subject-card {
-            background-color: orange;
-            border: 3px solid #2240aa;
-            border-radius: 5px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .science .subject-name {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+        }
+        
+        .sst .subject-name {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+        }
+        
+        .live-indicator {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 18px;
+            height: 18px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+        }
+        
+        .live-text {
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff0000;
             color: white;
-            font-size: 24px;
+            font-size: 0.7rem;
             font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 12px;
+            animation: blink 1.5s infinite;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+            text-transform: uppercase;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .current-day {
+            background: rgba(255, 215, 0, 0.2) !important;
+            position: relative;
+        }
+        
+        .current-day::after {
+            content: "TODAY";
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            background: gold;
+            color: #1a2a6c;
+            font-size: 0.6rem;
+            font-weight: bold;
+            padding: 1px 6px;
+            border-radius: 8px;
+        }
+        
+        .note {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-left: 3px solid #ff5722;
+        }
+        
+        .note strong {
+            color: #ffcc70;
+        }
+        
+        .live-now-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .live-now-box {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff0000, #b30000);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 8px 0;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 0, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
+        }
+        
+        .live-class-info {
+            font-size: 1rem;
+            margin: 12px 0;
+            color: #fff;
+            line-height: 1.4;
+        }
+        
+        .join-button {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.2s;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+            display: inline-flex;
+            align-items: center;
         }
         
-        .subject-card:hover {
-            transform: scale(1.05);
+        .join-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(76, 175, 80, 0.6);
         }
         
-        .video-player-container {
+        .join-button i {
+            margin-right: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0 15px;
+            color: #ccc;
+            font-size: 0.8rem;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Live stream overlay */
+        .live-stream-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 1000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .video-player {
-            width: 90%;
-            max-width: 800px;
-            background-color: #000;
-            position: relative;
-        }
-        
-        .video-player video {
-            width: 100%;
-        }
-        
-        .close-player {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        .subject-content {
-            margin-top: 20px;
-            display: none;
-        }
-        
-        .video-item {
-            background-color: white;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-        
-        .video-item:hover {
-            background-color: #f0f0f0;
-        }
-        
-        .back-btn {
-            padding: 10px 15px;
-            background-color: #008000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 120px;
-        }
-        
-        .back-btn i {
-            margin-right: 5px;
-        }
-        
-        .back-btn:hover {
-            background-color: #1a3377;
-        }
-        
-        .info-content, .contact-content, .appstore-content {
-            display: none;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            margin-top: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .info-content h3, .contact-content h3, .appstore-content h3 {
-            color: #2240aa;
-            margin-bottom: 15px;
-        }
-        
-        .info-content p, .contact-content p {
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-        
-        .app-link {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #2240aa;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        
-        .app-link:hover {
-            background-color: #1a3377;
-        }
-        
-        .hidden {
-            display: none !important;
-        }
-        
-        /* Live Stream Styles */
-        .live-option-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .live-option-box {
-            background-color:black;
-            border: 3px solid #2240aa;
-            border-radius: 10px;
-            padding: 15px;
-            color: white;
-            cursor: pointer;
-            transition: transform 0.2s;
-            height: 25px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .live-stream-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .stream-header {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .stream-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .stream-title i {
+            color: #ff0000;
+            margin-right: 10px;
+            animation: blink 1.5s infinite;
+        }
+        
+        .close-stream {
+            background: #ff5722;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .close-stream:hover {
+            transform: rotate(90deg);
+            background: #ff0000;
+        }
+        
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            position: relative;
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .chat-container {
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-header {
+            padding: 10px 15px;
+            background: rgba(255, 107, 129, 0.3);
+            font-weight: bold;
+        }
+        
+        .chat-messages {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .message {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 15px;
+            margin-bottom: 8px;
+            max-width: 80%;
+            align-self: flex-start;
+            animation: fadeIn 0.3s;
+        }
+        
+        .message.user {
+            background: rgba(255, 107, 129, 0.3);
+            align-self: flex-end;
+        }
+        
+        .user-info {
+            font-size: 0.7rem;
+            color: #ff6b81;
+            margin-bottom: 2px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .stream-controls {
+            width: 100%;
+            max-width: 800px;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px;
+            }
+            
+            header {
+                padding: 12px 0;
+            }
+            
+            .app-name {
+                font-size: 1.5rem;
+            }
+            
+            .tagline {
+                font-size: 0.9rem;
+            }
+            
+            .current-time {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .timetable {
+                font-size: 0.8rem;
+            }
+            
+            .timetable th {
+                padding: 10px 5px;
+                font-size: 0.8rem;
+            }
+            
+            .timetable td {
+                padding: 12px 5px;
+            }
+            
+            .day-cell {
+                padding-left: 10px;
+                font-size: 0.85rem;
+            }
+            
+            .subject-name {
+                padding: 5px 10px;
+                min-width: 70px;
+                font-size: 0.8rem;
+            }
+            
+            .live-indicator {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .note {
+                padding: 12px;
+                font-size: 0.85rem;
+            }
+            
+            .live-now-container {
+                padding: 15px;
+            }
+            
+            .live-now-box {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            
+            .live-class-info {
+                font-size: 0.95rem;
+            }
+            
+            .join-button {
+                padding: 8px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .stream-header, .stream-controls {
+                padding: 10px 15px;
+            }
+            
+            .stream-title {
+                font-size: 1rem;
+            }
+            
+            .close-stream {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .chat-container {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .app-name {
+                font-size: 1.3rem;
+            }
+            
+            .subject-name {
+                min-width: 65px;
+                font-size: 0.75rem;
+                padding: 4px 8px;
+            }
+        }
+        
+        /* Decorative background elements */
+        .bg-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        .bg-1 {
+            width: 300px;
+            height: 300px;
+            background: #ff5722;
+            top: -150px;
+            right: -150px;
+        }
+        
+        .bg-2 {
+            width: 200px;
+            height: 200px;
+            background: #2196f3;
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .bg-3 {
+            width: 150px;
+            height: 150px;
+            background: #4caf50;
+            top: 30%;
+            left: 10%;
+        }
+        
+        /* Admin controls */
+        .admin-controls {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
             text-align: center;
         }
         
-        .live-option-box:hover {
-            transform: scale(1.05);
+        .admin-title {
+            color: #ffcc70;
+            margin-bottom: 15px;
         }
         
-        .live-option-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 5px;
+        .subject-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         
-        .live-option-desc {
-            font-size: 16px;
-        }
-        
-        .live-stream-container {
-            margin-top: 20px;
-            background: #000;
-            padding: 10px;
-            border-radius: 8px;
-            display: none;
-        }
-        
-        .live-player {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        
-        .live-player iframe {
-            width: 100%;
-            height: 400px;
+        .subject-btn {
+            background: rgba(255, 255, 255, 0.1);
             border: none;
-            border-radius: 5px;
-        }
-        
-        .close-live-btn {
-            padding: 10px 15px;
-            background-color: #ff0000;
             color: white;
-            border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 50px;
             cursor: pointer;
-            width: 100%;
+            transition: all 0.3s;
+            font-weight: 500;
         }
         
-        .close-live-btn:hover {
-            background-color: #cc0000;
+        .subject-btn:hover {
+            background: rgba(255, 107, 129, 0.3);
+            transform: translateY(-3px);
         }
         
-        /* Font Awesome for icons */
-        .fa {
+        .maths-btn {
+            background: linear-gradient(135deg, #ff5722, #e64a19);
+        }
+        
+        .science-btn {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+        }
+        
+        .sst-btn {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+        }
+        
+        .timer {
+            background: rgba(255, 107, 129, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 10px 0;
             display: inline-block;
-            font-style: normal;
-            font-variant: normal;
-            text-rendering: auto;
-            line-height: 1;
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
-        }
-        
-        .fa-home:before {
-            content: "\f015";
-        }
-        
-        .fa-info-circle:before {
-            content: "\f05a";
-        }
-        
-        .fa-phone:before {
-            content: "\f095";
-        }
-        
-        .fa-store:before {
-            content: "\f54e";
         }
     </style>
 </head>
 <body>
-    <!-- Password Protection -->
-    <div class="password-protection">
+    <div class="bg-elements">
+        <div class="bg-element bg-1"></div>
+        <div class="bg-element bg-2"></div>
+        <div class="bg-element bg-3"></div>
+    </div>
+    
+    <!-- Login Container -->
+    <div class="login-container" id="login-container">
+        <div class="login-header">
+            <h1>❤️‍🔥 LEARN AKASH ❤️‍🔥</h1>
+            <p>Aarambh Batch - Class 10</p>
+        </div>
         <div class="password-box">
-            <h2>ENTER KEY🔐</h2>
-            <input type="password" id="password-input" placeholder="Enter password">
-            <button id="password-submit">SUBMIT</button>
-            <p class="error" id="password-error">PASSWORD GALAT HAI🫣</p>
+            <input type="password" id="password-input" placeholder="Enter access key...">
+            <div class="error-message" id="error-message"></div>
+            <button onclick="checkPassword()">ACCESS CLASSES</button>
         </div>
     </div>
     
-    <!-- Main Content (hidden until password is entered) -->
-    <div class="main-content" style="display: none;">
+    <!-- Main App Container -->
+    <div class="container app-container" id="app-container">
         <header>
-            <button class="menu-btn">|||</button>
             <div class="logo-container">
-                <img src="https://raw.githubusercontent.com/akashkumarsiffngh/My-imag/refs/heads/main/file_00000000eb7461f883fd1156830f5780.png" alt="LEARN AKASH Logo" class="logo">
-                <div class="app-name">❤️‍🔥LEARN AKASH❤️‍🔥</div>
+                <div class="app-name">❤️‍🔥 LEARN AKASH ❤️‍🔥</div>
+                <div class="tagline">Aarambh Batch</div>
             </div>
+            <div class="current-time" id="current-time">Loading current time...</div>
         </header>
         
-        <!-- Side Menu -->
-        <div class="menu">
-            <span class="close-btn">&times;</span>
-            <div class="menu-header">
-                <img src="https://raw.githubusercontent.com/akashkumarsiffngh/My-imag/refs/heads/main/file_00000000eb7461f883fd1156830f5780.png" alt="Menu Logo" class="menu-logo">
-                <div class="menu-title">❤️‍🔥LEARN AKASH❤️‍🔥</div>
-            </div>
-            <div class="menu-item" id="home-btn">
-                <i class="fa fa-home"></i>🏡Home
-            </div>
-            <div class="menu-item" id="info-btn">
-                <i class="fa fa-info-circle"></i>ℹ️Info
-            </div>
-            <div class="menu-item" id="contact-btn">
-                <i class="fa fa-phone"></i>☎️Contact
-            </div>
-            <div class="menu-item" id="appstore-btn">
-                <i class="fa fa-store"></i>Ⓜ️More Apps
-            </div>
-        </div>
-        
-        <!-- Main Container -->
-        <div class="container">
-            <!-- Subjects Grid -->
-            <div class="subject-grid" id="subject-grid">
-                <div class="subject-card" data-subject="maths">MATHS</div>
-                <div class="subject-card" data-subject="science">SCIENCE</div>
-                <div class="subject-card" data-subject="sst">SST</div>
-                <div class="subject-card" data-subject="live">LIVE</div>
-            </div>
-            
-            <!-- Subject Content Pages -->
-            <div class="subject-content" id="maths-content">
-                <button class="back-btn"><i class="fa fa-home"></i>🏡Home</button>
-             
-                
-           
-            <!--maths video link below 👇 -->
-          
-<div class="video-item" data-video="https://youtu.be/_0ooaKrdubI">Real Number L-1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4351824/174473579119298296383/174473579119298296383_8296383.m3u8">Real Numbers 2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4354873/174499225616481097666/174499225616481097666_1097666.m3u8">Real Number 3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4355458/174508004648941097666/174508004648941097666_1097666.m3u8">Real Number 4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4356796/174525209654081097666/174525209654081097666_1097666.m3u8">Real Number L5</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4357843/174533856999441097666/174533856999441097666_1097666.m3u8">Real Number L6</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4361323/174559737034061097666/174559737034061097666_1097666.m3u8">Polynomials L1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4362134/174568400490071097666/174568400490071097666_1097666.m3u8">Polynomials L2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4363379/174585623134271097666/174585623134271097666_1097666.m3u8">Polynomials L3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4364779/174594155534621097666/174594155534621097666_1097666.m3u8">Polynomials L4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4368398/174620142857631097666/174620142857631097666_1097666.m3u8">Polynomials L5</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4370160/174628714218381097666/174628714218381097666_1097666.m3u8">Polynomials L6</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4372312/174646254284121097666/174646254284121097666_1097666.m3u8">Pair of Linear Equations in 2 Var. L1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4373921/174654659565961097666/174654659565961097666_1097666.m3u8">Pair of Linear Equations in 2 Var. L2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377325/174680602725391097666/174680602725391097666_1097666.m3u8">Pair of Linear Equations in 2 Var. L3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377995/174689370672401097666/174689370672401097666_1097666.m3u8">Pair of Linear Equations in 2 Var. L4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4379163/174706562215611097666/174706562215611097666_1097666.m3u8">Pair of Linear Equations in 2 Var. L5</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4384128/174741081479871097666/174741081479871097666_1097666.m3u8">Pair of Linear Equations in 2 Var. L6</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4384834/174749789730281097666/174749789730281097666_1097666.m3u8">Pair of Linear Equations in 2 Var. L7</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4385006/174758500568421097666/174758500568421097666_1097666.m3u8">Pair of Linear Equations in 2 Var. L8</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4385837/174766945772321097666/174766945772321097666_1097666.m3u8">Trigonometry L1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4387086/174775745330681097666/174775745330681097666_1097666.m3u8">Trigonometry L2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4390972/174801504255421097666/174801504255421097666_1097666.m3u8">Trigonometry L3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4391537/174810128337891097666/174810128337891097666_1097666.m3u8">Trigonometry L4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4391700/174818000698001097666/174818000698001097666_1097666.m3u8">Trigonometry L5</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4393960/174835303078611097666/174835303078611097666_1097666.m3u8">Trigonometry L6</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4394019/174836153096901097666/174836153096901097666_1097666.m3u8">Trigonometry L7</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4397236/174861941652361097666/174861941652361097666_1097666.m3u8">Trigonometry L8</div>                
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4409472/174982914345591097666/174982914345591097666_1097666.m3u8">Some Applications of Trigonometry L1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4410213/174991601648451097666/174991601648451097666_1097666.m3u8">Some Applications of Trigonometry L2</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4411382/175008869822868752407/175008869822868752407_8752407.m3u8">Some Applications of Trigonometry L3</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4412636/175017526367988752407/175017526367988752407_8752407.m3u8">Some Applications of Trigonometry L4</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4416695/175052142386308752407/175052142386308752407_8752407.m3u8">Some Applications of Trigonometry L6</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4417726/175069337476008752407/175069337476008752407_8752407.m3u8">Quadratic Equations L1</div>         
-          
-            </div>
-            
-            <div class="subject-content" id="science-content">
-                <button class="back-btn"><i class="fa fa-home"></i>🏡Home</button>
-            
-                <!--Science video link below-->
-
-<div class="video-item" data-video="https://youtu.be/TRS7cu_n108">Chemical Reactions & Equations Lecture 1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4352723/174480784354101097666/174480784354101097666_1097666.m3u8">Chemical Reactions & Equations Lecture 2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4353809/174489432994287880624/174489432994287880624_7880624.m3u8">Chemical Reactions & Equations Lecture 3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4354717/174498038229378296383/174498038229378296383_8296383.m3u8">Chemical Reactions & Equations Lecture 4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4358838/174541230763428296383/174541230763428296383_8296383.m3u8">Chemical Reactions & Equations Lecture 5</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4359955/174549890921018296383/174549890921018296383_8296383.m3u8">Chemical Reactions & Equations Lecture 6</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4361147/174558535223448296383/174558535223448296383_8296383.m3u8">Chemical Reactions & Equations Lecture 7</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4362037/174567339728038296383/174567339728038296383_8296383.m3u8">Chemical Reactions & Equations Lecture 8</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4365846/174601868499698296383/174601868499698296383_8296383.m3u8">Light Lecture 1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4367004/174610340159018296383/174610340159018296383_8296383.m3u8">Light Lecture 2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4368177/174619014979628296383/174619014979628296383_8296383.m3u8">Light Lecture 3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4370026/174627675448638296383/174627675448638296383_8296383.m3u8">Light Lecture 4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4374886/174662262789208296383/174662262789208296383_8296383.m3u8">Light Lecture 5</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4376022/174670906343678296383/174670906343678296383_8296383.m3u8">Light Lecture 6</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377192/174679471966318296383/174679471966318296383_8296383.m3u8">Light Lecture 7</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4384004/174739989526388296383/174739989526388296383_8296383.m3u8">Light + Doubt Class (Part 1)</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4384742/174748481878798296383/174748481878798296383_8296383.m3u8">Light + Doubt Class (Part 2)</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4388022/174783092256088296383/174783092256088296383_8296383.m3u8">Life Processes Lecture 1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4390836/174800421277348296383/174800421277348296383_8296383.m3u8">Life Processes Lecture 2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4391456/174809097852338296383/174809097852338296383_8296383.m3u8">Life Processes Lecture 3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4394974/174843674156618296383/174843674156618296383_8296383.m3u8">Life Processes Lecture 4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4396153/174852339785068296383/174852339785068296383_8296383.m3u8">Life Processes Lecture 5</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4397141/174860981887908296383/174860981887908296383_8296383.m3u8">Life Processes Lecture 6</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4398033/174878264133148296383/174878264133148296383_8296383.m3u8">Life Processes Lecture 7</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4408313/174973219814568296383/174973219814568296383_8296383.m3u8">Life Processes L8 + Doubt Class</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4409353/174981921287648296383/174981921287648296383_8296383.m3u8">Acid base and salts L1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4410136/174990583084158296383/174990583084158296383_8296383.m3u8">Acid base and salts L2</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4413730/175025130196888929414/175025130196888929414_8929414.m3u8">Acid base and salts L3</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4414866/175033738727468929414/175033738727468929414_8929414.m3u8">Acid base and salts L4</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4415940/175042369115078929414/175042369115078929414_8929414.m3u8">Acid , Bases , and Salts L5</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4416573/175050899233748929414/175050899233748929414_8929414.m3u8">Doubt Solving Class</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4420694/175094118357238929414/175094118357238929414_8929414.m3u8">Human eye - L1</div>              
-            
-            </div>
-            
-            <div class="subject-content" id="sst-content">
-                <button class="back-btn"><i class="fa fa-home"></i>🏡Home</button>
-            
-                
-                <!--SST VIDEO LINK BELOW-->
-            
-                <div class="video-item" data-video="https://youtu.be/URGAO81IXXk">Development Lecture 1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4352990/174481810831487880624/174481810831487880624_7880624.m3u8">Development Lecture 2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4354004/174490425923587880624/174490425923587880624_7880624.m3u8">Development Lecture 3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4355307/174506622189247880624/174506622189247880624_7880624.m3u8">Development Lecture 4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4356674/174523974370667880624/174523974370667880624_7880624.m3u8">Development Lecture 5</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4357716/174532560751637880624/174532560751637880624_7880624.m3u8">Resources and Development Lecture 1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4359018/174542319983487880624/174542319983487880624_7880624.m3u8">Resources and Development Lecture 2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4360148/174550914289447880624/174550914289447880624_7880624.m3u8">Resources and Development Lecture 3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4363238/174584423215647880624/174584423215647880624_7880624.m3u8">Resources and Development Lecture 4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4364563/174593072250617880624/174593072250617880624_7880624.m3u8">Resources and Development Lecture 5</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4366034/174602805446617880624/174602805446617880624_7880624.m3u8">Resources and Development Lecture 6</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4367150/174611369995057880624/174611369995057880624_7880624.m3u8">Doubt Solving Class</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4372168/174644893368577880624/174644893368577880624_7880624.m3u8">Power Sharing Lecture 1</div>
-<div class="video-item" data-video="https://d3cx6qbbd4cbso.cloudfront.net/file_library/videos/vod_non_drm_ios/4387658/1747816567_1824395781527963/sunny/1747816234724_549446162669787600_video_VOD.m3u8">Power Sharing Lecture 2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4374999/174663266860947880624/174663266860947880624_7880624.m3u8">Power Sharing Lecture 3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4376187/174671890371767880624/174671890371767880624_7880624.m3u8">Power Sharing Lecture 4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4379050/174705654256247880624/174705654256247880624_7880624.m3u8">Doubt Class + Power Sharing</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4385660/174765773598337880624/174765773598337880624_7880624.m3u8">The Rise of Nationalism in Europe Lecture 1</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4386901/174774447851067880624/174774447851067880624_7880624.m3u8">The Rise of Nationalism in Europe Lecture 2</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4388156/174784213776117880624/174784213776117880624_7880624.m3u8">The Rise of Nationalism in Europe Lecture 3</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4389229/174791822718927880624/174791822718927880624_7880624.m3u8">The Rise of Nationalism in Europe Lecture 4</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4393945/174835110070857880624/174835110070857880624_7880624.m3u8">The Rise of Nationalism in Europe Lecture 5</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4395114/174844758699447880624/174844758699447880624_7880624.m3u8">The Rise of Nationalism in Europe Lecture 6</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4396261/174853315058577880624/174853315058577880624_7880624.m3u8">The Rise of Nationalism in Europe Lecture 7</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4406159/174955875139637880624/174955875139637880624_7880624.m3u8">The Rise of Nationalism in Europe L8</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4406366/174956988532027880624/174956988532027880624_7880624.m3u8">The Rise of Nationalism in Europe L9</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4407324/174964584764377880624/174964584764377880624_7880624.m3u8">The Rise of Nationalism in Europe L10</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4407497/174965714629147880624/174965714629147880624_7880624.m3u8">The Rise of Nationalism in Europe L11</div>
-<div class="video-item" data-video="https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4408429/174974249991017880624/174974249991017880624_7880624.m3u8">Doubt Solving Class</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4411210/175007770550547125088/175007770550547125088_7125088.m3u8">Forest And Wildlife Resources L1</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4412488/175016414550777125088/175016414550777125088_7125088.m3u8">Forest And Wildlife Resources L2</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4413854/175026084256997125088/175026084256997125088_7125088.m3u8">Forest And Wildlife Resources L3</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4414989/175034785995657125088/175034785995657125088_7125088.m3u8">Sectors of the Indian Economy - 1</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4417609/175068233385897125088/175068233385897125088_7125088.m3u8">Sectors of the Indian Economy L2</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4418570/175076895626987125088/175076895626987125088_7125088.m3u8">Sectors of the Indian Economy L3</div>
-<div class="video-item" data-video="https://d274dp7v20n4nf.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4419824/175086546631887125088/175086546631887125088_7125088.m3u8">Sectors of the Indian Economy L4</div>
-          
-            </div>
-            
-            <!-- Live Section with Styled Options -->
-            <div class="subject-content" id="live-content">
-                <button class="back-btn"><i class="fa fa-home"></i>🏡Home</button>
-            
-               <!--LIVE CLASSES LINK BELOW-->
-                
-                <div class="live-option-container">
-                    <div class="live-option-box" data-live="1">
-                        <div class="live-option-title">🔴SST LIVE</div>
-                    </div>
-                    
-                    <div class="live-option-box" data-live="2">
-                        <div class="live-option-title">🔴SCIENCE LIVE</div>
-                    </div>
-              <div class="live-option-box" data-live="3">
-                        <div class="live-option-title">🔴MATHS LIVE</div>
-              </div>
-                </div>
-                
-                    
-                <div class="live-stream-container" id="live-stream-container">
-                    <div class="live-player">
-                        <iframe id="live-iframe" allowfullscreen></iframe>
-                    </div>
-                    <button class="close-live-btn">❌ CLOSE</button>
-                </div>
-                                          </div>
-
-                        <!-- Info Content -->
-            <div class="info-content" id="info-content">
-                <h3>About</h3>
-                <p>Created by Akash Singh and this is official app. Similar to Next Toppers.</p>
-            </div>
-            
-            <!-- Contact Content -->
-            <div class="contact-content" id="contact-content">
-                <h3>Contact Details</h3>
-                <p>Mobile: +918825136798</p>
-                <p>Email: akashkumarsinghgahiri@gmail.com</p>
-            </div>
-            
-            <!-- App Store Content -->
-            <div class="appstore-content" id="appstore-content">
-                <h3>More Apps</h3>
-                <p>Check out our other applications:</p>
-                <a href="#" class="app-link" id="appstore-link">DOWNLOAD</a>
+        <div class="schedule-container">
+            <h2 class="section-title">Weekly Class Schedule</h2>
+            <table class="timetable">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>5:00 PM</th>
+                        <th>8:00 PM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="monday">
+                        <td class="day-cell">Monday</td>
+                        <td class="subject-cell sst"><div class="subject-name">SST</div></td>
+                        <td class="subject-cell maths"><div class="subject-name">Maths</div></td>
+                    </tr>
+                    <tr id="tuesday">
+                        <td class="day-cell">Tuesday</td>
+                        <td class="subject-cell sst"><div class="subject-name">SST</div></td>
+                        <td class="subject-cell maths"><div class="subject-name">Maths</div></td>
+                    </tr>
+                    <tr id="wednesday">
+                        <td class="day-cell">Wednesday</td>
+                        <td class="subject-cell science"><div class="subject-name">Science</div></td>
+                        <td class="subject-cell sst"><div class="subject-name">SST</div></td>
+                    </tr>
+                    <tr id="thursday">
+                        <td class="day-cell">Thursday</td>
+                        <td class="subject-cell science"><div class="subject-name">Science</div></td>
+                        <td class="subject-cell sst"><div class="subject-name">SST</div></td>
+                    </tr>
+                    <tr id="friday">
+                        <td class="day-cell">Friday</td>
+                        <td class="subject-cell science"><div class="subject-name">Science</div></td>
+                        <td class="subject-cell maths"><div class="subject-name">Maths</div></td>
+                    </tr>
+                    <tr id="saturday">
+                        <td class="day-cell">Saturday</td>
+                        <td class="subject-cell science"><div class="subject-name">Science</div></td>
+                        <td class="subject-cell maths"><div class="subject-name">Maths</div></td>
+                    </tr>
+                    <tr id="sunday">
+                        <td class="day-cell">Sunday</td>
+                        <td class="subject-cell" colspan="2"><div class="subject-name" style="background: #9e9e9e; color: #333; font-size: 0.9rem;">No Classes</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="note">
+                <p><strong>Note:</strong> Every 5th class will be a Doubt solving class. Please check the app for specific doubt class schedules.</p>
             </div>
         </div>
         
-        <!-- Video Player -->
-        <div class="video-player-container" id="video-player">
-            <div class="video-player">
-                <span class="close-player">&times;</span>
-                <video controls id="main-video-player">
-                    Your browser does not support the video tag.
-                </video>
+        <div class="live-now-container" id="live-now-container">
+            <div class="live-now-box">
+                <i class="fas fa-circle"></i> LIVE NOW
             </div>
+            <div class="live-class-info" id="live-class-info">No live classes at the moment</div>
+            <button class="join-button" id="join-button">
+                <i class="fas fa-video"></i> JOIN CLASS
+            </button>
+            <div class="timer" id="next-class-timer">Next class in: --:--:--</div>
+        </div>
+        
+        <div class="admin-controls" id="admin-controls">
+            <h3 class="admin-title">ADMIN CONTROLS - PLAY ANY CLASS</h3>
+            <div class="subject-controls">
+                <button class="subject-btn maths-btn" onclick="playStream('maths')">
+                    <i class="fas fa-calculator"></i> MATHS
+                </button>
+                <button class="subject-btn science-btn" onclick="playStream('science')">
+                    <i class="fas fa-flask"></i> SCIENCE
+                </button>
+                <button class="subject-btn sst-btn" onclick="playStream('sst')">
+                    <i class="fas fa-globe-asia"></i> SST
+                </button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 ❤️‍🔥 LEARN AKASH ❤️‍🔥 | Official Aarambh Batch Schedule</p>
+            <p>Contact: akashkumarsinghgahiri@gmail.com</p>
+        </footer>
+    </div>
+    
+    <!-- Live stream overlay -->
+    <div class="live-stream-overlay" id="stream-overlay">
+        <div class="stream-header">
+            <div class="stream-title" id="stream-title">
+                <i class="fas fa-circle"></i>
+                <span id="stream-subject">Live Class</span>
+            </div>
+            <button class="close-stream" id="close-stream">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="video-container">
+            <video id="live-player" controls></video>
+        </div>
+        <div class="chat-container">
+            <div class="chat-header">LIVE CHAT - CLASS 10 STUDENTS</div>
+            <div class="chat-messages" id="chat-messages"></div>
+        </div>
+        <div class="stream-controls">
+            <button class="join-button" id="fullscreen-btn">
+                <i class="fas fa-expand"></i> FULLSCREEN
+            </button>
         </div>
     </div>
 
     <script>
-        // Password Protection
-        const passwordProtection = document.querySelector('.password-protection');
+        // Stream URLs
+        const liveStreamUrls = {
+            'maths': 'https://dga9kme080o0w.cloudfront.net/out/v1/5c7cfedca3df4fc99ea383b5f2e6a7a8/index_1.m3u8',
+            'science': 'https://d133w6ldrek1er.cloudfront.net/out/v1/f15d86916b1f404baeb09967b920d86a/index_1.m3u8',
+            'sst': 'https://dga9kme080o0w.cloudfront.net/out/v1/90ab1354cfcd4c5b83cf78a87d96041e/index_1.m3u8'
+        };
+        
+        // Fake chat messages
+        const chatMessages = [
+            "Hello everyone!",
+            "REPEAT SIR",
+            "Hi SIR!",
+            "Can you repeat that?",
+            "I didn't understand",
+            "Great explanation!",
+            "SPAM",
+            "Thanks for the class",
+            "Please go slower",
+            "When is the test?",
+            "Homework?",
+            "🌑 🌑 DARK",
+            "Can we have notes?",
+            "Connection problem",
+            "I'm from Delhi",
+            "Anyone from Mumbai?",
+            "HI AKASH KAISE HO",
+            "SIR PLEASE TAKE MY NAME",
+            "MAGIC DIKHAO SIR",
+           "OLIVIA BHABHI KAISI HAI",
+            "This is boring",
+            "Awesome!",
+            "SPAMMING",
+            "Hi friends!",
+            "Can you share slides?",
+            "I love this class",
+            "Too fast!",
+            "When's the break?",
+            "SPAM TIME"
+        ];
+        
+        // Student names for chat
+        const studentNames = [
+          "AKASH","YASH", "AYUSH", "Rahul", "Priya", "Amit", "Sneha", "Vikas", "Anjali", 
+            "Raj", "Neha", "Karan", "Pooja", "Arjun", "Divya"
+        ];
+        
+        // Global variables
+        let isAdmin = false;
+        let chatInterval;
+        let timerInterval;
+        let currentLiveSubject = null;
+        let currentLiveStreamUrl = null;
+        let nextClassTime = null;
+        
+        // DOM Elements
+        const loginContainer = document.getElementById('login-container');
+        const appContainer = document.getElementById('app-container');
         const passwordInput = document.getElementById('password-input');
-        const passwordSubmit = document.getElementById('password-submit');
-        const passwordError = document.getElementById('password-error');
-        const mainContent = document.querySelector('.main-content');
-        const menuBtn = document.querySelector('.menu-btn');
+        const errorMessage = document.getElementById('error-message');
+        const adminControls = document.getElementById('admin-controls');
+        const livePlayer = document.getElementById('live-player');
+        const chatMessagesEl = document.getElementById('chat-messages');
+        const timerDisplay = document.getElementById('current-time');
+        const liveClassInfo = document.getElementById('live-class-info');
+        const joinButton = document.getElementById('join-button');
+        const streamOverlay = document.getElementById('stream-overlay');
+        const streamTitle = document.getElementById('stream-subject');
+        const nextClassTimer = document.getElementById('next-class-timer');
         
-        passwordSubmit.addEventListener('click', () => {
-            if (passwordInput.value === '85') {
-                passwordProtection.style.display = 'none';
-                mainContent.style.display = 'block';
-                menuBtn.style.display = 'block';
-            } else {
-                passwordError.style.display = 'block';
+        // Check password function
+        function checkPassword() {
+            const password = passwordInput.value;
+            
+            if (password === '22') {
+                // Admin access
+                isAdmin = true;
+                loginContainer.style.display = 'none';
+                appContainer.style.display = 'block';
+                adminControls.style.display = 'block';
+                startChat();
+                updateCurrentTime();
+                liveClassInfo.textContent = "Admin access - You can play any class at any time";
+                calculateNextClass();
+            } 
+            else if (password === '85') {
+                // User access
+                isAdmin = false;
+                loginContainer.style.display = 'none';
+                appContainer.style.display = 'block';
+                adminControls.style.display = 'none';
+                startChat();
+                updateCurrentTime();
+                checkForLiveClass();
+                calculateNextClass();
+            } 
+            else {
+                errorMessage.textContent = 'Invalid password. Please try again.';
             }
-        });
-        
-        // Menu Toggle
-        const menu = document.querySelector('.menu');
-        const closeBtn = document.querySelector('.close-btn');
-        
-        menuBtn.addEventListener('click', () => {
-            menu.classList.add('active');
-        });
-        
-        closeBtn.addEventListener('click', () => {
-            menu.classList.remove('active');
-        });
-        
-        // Menu Navigation
-        const homeBtn = document.getElementById('home-btn');
-        const infoBtn = document.getElementById('info-btn');
-        const contactBtn = document.getElementById('contact-btn');
-        const appstoreBtn = document.getElementById('appstore-btn');
-        const infoContent = document.getElementById('info-content');
-        const contactContent = document.getElementById('contact-content');
-        const appstoreContent = document.getElementById('appstore-content');
-        const appstoreLink = document.getElementById('appstore-link');
-        const subjectGrid = document.getElementById('subject-grid');
-        
-        homeBtn.addEventListener('click', showSubjectGrid);
-        infoBtn.addEventListener('click', showInfo);
-        contactBtn.addEventListener('click', showContact);
-        appstoreBtn.addEventListener('click', showAppStore);
-
-        function showSubjectGrid() {
-            hideAllContents();
-            subjectGrid.classList.remove('hidden');
-            menu.classList.remove('active');
+            
+            passwordInput.value = '';
         }
-
-        function showInfo() {
-            hideAllContents();
-            infoContent.style.display = 'block';
-            menu.classList.remove('active');
-        }
-
-        function showContact() {
-            hideAllContents();
-            contactContent.style.display = 'block';
-            menu.classList.remove('active');
-        }
-
-        function showAppStore() {
-            hideAllContents();
-            appstoreContent.style.display = 'block';
-            menu.classList.remove('active');
-        }
-
-        function hideAllContents() {
-            // Hide all content sections
-            document.querySelectorAll('.subject-content, .info-content, .contact-content, .appstore-content').forEach(el => {
-                el.style.display = 'none';
+        
+        // Update current time and check for live classes
+        function updateCurrentTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: true 
+            };
+            
+            const timeString = now.toLocaleDateString('en-US', options);
+            timerDisplay.textContent = timeString;
+            
+            // Highlight current day
+            const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            const currentDay = days[now.getDay()];
+            
+            // Remove highlight from all days
+            days.forEach(day => {
+                document.getElementById(day).classList.remove('current-day');
             });
-            document.getElementById('live-stream-container').style.display = 'none';
-            subjectGrid.classList.add('hidden');
+            
+            // Highlight current day
+            if (currentDay !== 'sunday') {
+                document.getElementById(currentDay).classList.add('current-day');
+            }
+            
+            // Check for live classes
+            if (!isAdmin) {
+                checkForLiveClass(now);
+            }
+            
+            // Update next class timer
+            if (nextClassTime) {
+                const diff = nextClassTime - now;
+                if (diff > 0) {
+                    const hours = Math.floor(diff / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                    nextClassTimer.textContent = `Next class in: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                } else {
+                    nextClassTimer.textContent = "Class starting now!";
+                    setTimeout(() => {
+                        checkForLiveClass();
+                        calculateNextClass();
+                    }, 1000);
+                }
+            }
+            
+            // Schedule next update
+            setTimeout(updateCurrentTime, 1000);
         }
-
-        // Subject Navigation
-        const subjectCards = document.querySelectorAll('.subject-card');
-        const backBtns = document.querySelectorAll('.back-btn');
         
-        subjectCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const subject = card.getAttribute('data-subject');
-                showSubjectContent(subject);
-            });
-        });
-
-        backBtns.forEach(btn => {
-            btn.addEventListener('click', showSubjectGrid);
-        });
-
-        function showSubjectContent(subject) {
-            hideAllContents();
-            document.getElementById(`${subject}-content`).style.display = 'block';
-        }
-
-        // Video Player
-        const videoItems = document.querySelectorAll('.video-item');
-        const videoPlayerContainer = document.getElementById('video-player');
-        const mainVideoPlayer = document.getElementById('main-video-player');
-        const closePlayer = document.querySelector('.close-player');
-        
-        videoItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const videoUrl = item.getAttribute('data-video');
-                if (videoUrl) {
-                    mainVideoPlayer.src = videoUrl;
-                    videoPlayerContainer.style.display = 'flex';
-                    mainVideoPlayer.play();
+        // Check for live classes
+        function checkForLiveClass(now = new Date()) {
+            const hour = now.getHours();
+            const minutes = now.getMinutes();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            
+            // Reset all live indicators
+            document.querySelectorAll('.live-indicator, .live-text').forEach(el => el.remove());
+            
+            // Reset current live stream
+            currentLiveSubject = null;
+            currentLiveStreamUrl = null;
+            
+            // Check if it's Sunday
+            if (day === 0) {
+                liveClassInfo.textContent = "No classes today - Enjoy your Sunday!";
+                joinButton.style.display = 'none';
+                return;
+            }
+            
+            // Class time slots
+            const classTimes = [
+                { start: 17, end: 18.5 }, // 5:00 PM to 6:30 PM
+                { start: 20, end: 21.5 }  // 8:00 PM to 9:30 PM
+            ];
+            
+            // Determine today's subjects
+            let subjects = [];
+            switch(day) {
+                case 1: // Monday
+                    subjects = ['sst', 'maths'];
+                    break;
+                case 2: // Tuesday
+                    subjects = ['sst', 'maths'];
+                    break;
+                case 3: // Wednesday
+                    subjects = ['science', 'sst'];
+                    break;
+                case 4: // Thursday
+                    subjects = ['science', 'sst'];
+                    break;
+                case 5: // Friday
+                    subjects = ['science', 'maths'];
+                    break;
+                case 6: // Saturday
+                    subjects = ['science', 'maths'];
+                    break;
+            }
+            
+            // Check each slot
+            classTimes.forEach((slot, index) => {
+                const timeDecimal = hour + (minutes / 60);
+                const isLive = timeDecimal >= slot.start && timeDecimal < slot.end;
+                
+                if (isLive) {
+                    currentLiveSubject = subjects[index];
+                    currentLiveStreamUrl = liveStreamUrls[currentLiveSubject];
+                    
+                    // Add live indicator to the corresponding cell
+                    const rowId = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][day];
+                    const cellIndex = index + 1; // Skip day cell
+                    const cell = document.querySelector(`#${rowId} td:nth-child(${cellIndex + 1})`);
+                    
+                    // Create and add live indicator
+                    const liveIndicator = document.createElement('div');
+                    liveIndicator.className = 'live-indicator';
+                    cell.appendChild(liveIndicator);
+                    
+                    // Create and add live text
+                    const liveText = document.createElement('div');
+                    liveText.className = 'live-text';
+                    liveText.textContent = 'Live';
+                    cell.appendChild(liveText);
                 }
             });
-        });
-
-        closePlayer.addEventListener('click', () => {
-            videoPlayerContainer.style.display = 'none';
-            mainVideoPlayer.pause();
-            mainVideoPlayer.src = '';
-        });
-
-        // Live Stream Handling
-        const liveOptionBoxes = document.querySelectorAll('.live-option-box');
-        const liveStreamContainer = document.getElementById('live-stream-container');
-        const liveIframe = document.getElementById('live-iframe');
-        const closeLiveBtn = document.querySelector('.close-live-btn');
-
-        const liveStreamUrls = {
-            //sst link
-            '1': 'https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8',
-         // science link
-            '2' : 'https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8',
-          // maths link
-            '3' : 'https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8',
-        };
-
-        liveOptionBoxes.forEach(box => {
-            box.addEventListener('click', () => {
-                const liveId = box.getAttribute('data-live');
-                playLiveStream(liveId);
-            });
-        });
-
-        function playLiveStream(liveId) {
-            const streamUrl = liveStreamUrls[liveId];
-            liveIframe.src = streamUrl;
-            liveStreamContainer.style.display = 'block';
-        }
-
-        closeLiveBtn.addEventListener('click', () => {
-            liveIframe.src = '';
-            liveStreamContainer.style.display = 'none';
-        });
-
-        // App Store Link
-        appstoreLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'https://github.com/akashkumarsiffngh/APP-STORE/releases/download/V1.0/_AS_STORE_18839133.apk';
-        });
-
-        // Block external URLs except for the app store link
-        document.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A' && e.target.id !== 'appstore-link') {
-                e.preventDefault();
+            
+            // Update live now section
+            if (currentLiveSubject) {
+                const subjectName = currentLiveSubject.charAt(0).toUpperCase() + currentLiveSubject.slice(1);
+                const slotName = classTimes[0].start === 17 ? "5:00 PM" : "8:00 PM";
+                liveClassInfo.textContent = `${subjectName} class is LIVE NOW (${slotName} slot)`;
+                joinButton.style.display = 'block';
+            } else {
+                liveClassInfo.textContent = "No live classes at the moment";
+                joinButton.style.display = 'none';
             }
-        }, true);
+        }
+        
+        // Calculate next class time
+        function calculateNextClass() {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            const hour = now.getHours();
+            const minutes = now.getMinutes();
+            
+            // If it's Sunday, next class is Monday at 5 PM
+            if (day === 0) {
+                const nextMonday = new Date(now);
+                nextMonday.setDate(now.getDate() + 1);
+                nextMonday.setHours(17, 0, 0, 0);
+                nextClassTime = nextMonday;
+                return;
+            }
+            
+            // Today's class times
+            const classTimes = [
+                { hour: 17, minute: 0 },
+                { hour: 20, minute: 0 }
+            ];
+            
+            // Check if there are classes later today
+            for (let time of classTimes) {
+                if (hour < time.hour || (hour === time.hour && minutes < time.minute)) {
+                    const nextClass = new Date(now);
+                    nextClass.setHours(time.hour, time.minute, 0, 0);
+                    nextClassTime = nextClass;
+                    return;
+                }
+            }
+            
+            // No more classes today, find next day with classes
+            let nextDay = (day + 1) % 7;
+            while (nextDay !== 0) {
+                if (nextDay !== 0) { // Skip Sunday
+                    const nextClass = new Date(now);
+                    nextClass.setDate(now.getDate() + (nextDay - day + 7) % 7);
+                    nextClass.setHours(17, 0, 0, 0); // First class of the day
+                    nextClassTime = nextClass;
+                    return;
+                }
+                nextDay = (nextDay + 1) % 7;
+            }
+        }
+        
+        // Play stream function
+        function playStream(subject) {
+            if (isAdmin) {
+                // Admin can play any subject at any time
+                currentLiveSubject = subject;
+                currentLiveStreamUrl = liveStreamUrls[subject];
+            }
+            
+            if (currentLiveSubject && currentLiveStreamUrl) {
+                const subjectName = currentLiveSubject.charAt(0).toUpperCase() + currentLiveSubject.slice(1);
+                
+                // Update stream title
+                streamTitle.textContent = `${subjectName} Live Class`;
+                
+                // Set the player source
+                if (Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(currentLiveStreamUrl);
+                    hls.attachMedia(livePlayer);
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        livePlayer.play();
+                    });
+                } else if (livePlayer.canPlayType('application/vnd.apple.mpegurl')) {
+                    livePlayer.src = currentLiveStreamUrl;
+                    livePlayer.addEventListener('loadedmetadata', () => {
+                        livePlayer.play();
+                    });
+                }
+                
+                // Show the overlay
+                streamOverlay.classList.add('active');
+            }
+        }
+        
+        // Close live stream
+        function closeLiveStream() {
+            // Pause the player and reset source
+            livePlayer.pause();
+            livePlayer.src = '';
+            
+            // Hide the overlay
+            streamOverlay.classList.remove('active');
+        }
+        
+        // Start the fake chat
+        function startChat() {
+            // Add initial messages
+            for (let i = 0; i < 15; i++) {
+                addChatMessage();
+            }
+            
+            // Add messages at a rate of 200 per minute (~3.3 per second)
+            chatInterval = setInterval(addChatMessage, 300);
+        }
+        
+        // Add a chat message
+        function addChatMessage() {
+            const message = document.createElement('div');
+            const isUser = Math.random() > 0.8;
+            const name = studentNames[Math.floor(Math.random() * studentNames.length)];
+            const text = chatMessages[Math.floor(Math.random() * chatMessages.length)];
+            
+            message.classList.add('message');
+            if (isUser) message.classList.add('user');
+            
+            message.innerHTML = `
+                <div class="user-info">${name}</div>
+                <div>${text}</div>
+            `;
+            
+            chatMessagesEl.appendChild(message);
+            chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+        }
+        
+        // Initialize event listeners
+        function initEventListeners() {
+            // Join button functionality
+            joinButton.addEventListener('click', () => {
+                if (currentLiveSubject) {
+                    playStream(currentLiveSubject);
+                }
+            });
+            
+            // Close stream button
+            document.getElementById('close-stream').addEventListener('click', closeLiveStream);
+            
+            // Fullscreen button
+            document.getElementById('fullscreen-btn').addEventListener('click', () => {
+                if (livePlayer.requestFullscreen) {
+                    livePlayer.requestFullscreen();
+                } else if (livePlayer.mozRequestFullScreen) {
+                    livePlayer.mozRequestFullScreen();
+                } else if (livePlayer.webkitRequestFullscreen) {
+                    livePlayer.webkitRequestFullscreen();
+                } else if (livePlayer.msRequestFullscreen) {
+                    livePlayer.msRequestFullscreen();
+                }
+            });
+            
+            // Close stream when clicking outside the player
+            streamOverlay.addEventListener('click', (e) => {
+                if (e.target === streamOverlay) {
+                    closeLiveStream();
+                }
+            });
+        }
+        
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            initEventListeners();
+        });
     </script>
 </body>
 </html>
