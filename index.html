@@ -1,52 +1,369 @@
-<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download Our App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #00b4db, #0083b0);
-      color: white;
-      text-align: center;
-      padding: 50px;
-    }
-    .container {
-      max-width: 500px;
-      margin: auto;
-      background: rgba(0, 0, 0, 0.2);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    h1 {
-      margin-bottom: 15px;
-    }
-    p {
-      font-size: 18px;
-      margin-bottom: 25px;
-    }
-    .btn {
-      display: inline-block;
-      background: #ff9800;
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
-      font-size: 18px;
-      border-radius: 8px;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #e68900;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDYVERSE AKASH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: moveBackground 200s linear infinite;
+        }
+        
+        @keyframes moveBackground {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 1000px; }
+        }
+        
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            z-index: -1;
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(45deg) translateX(-100%); }
+            100% { transform: rotate(45deg) translateX(100%); }
+        }
+        
+        .logo {
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .logo p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+        
+        .password-form {
+            margin: 25px 0;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        button {
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(90deg, #00f2fe, #4facfe);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .message {
+            margin-top: 20px;
+            color: #ff6b6b;
+            font-size: 1rem;
+            min-height: 24px;
+        }
+        
+        .security-info {
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        .fullscreen-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            background: #000;
+            z-index: 1000;
+        }
+        
+        .content-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1001;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255, 0, 0, 0.5);
+        }
+        
+        .hint {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+                width: 95%;
+            }
+            
+            .logo h1 {
+                font-size: 2.2rem;
+            }
+            
+            button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>📱 This is an Older Website</h1>
-    <p>Please download our app through the AS Store for a better experience.</p>
-    <a href="https://akashkumarsiffngh.github.io/APP-STORE/" class="btn" target="_blank">Download App</a>
-  </div>
+    <div class="bg-animation"></div>
+    
+    <div class="container">
+        <div class="logo">
+            <h1>LEARN AKASH</h1>
+            <p>Secure Learning Platform</p>
+        </div>
+        
+        <div class="password-form">
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Enter Access Password" autocomplete="off">
+            </div>
+            
+            <button id="submit-btn">Access Content</button>
+            <div id="message" class="message"></div>
+            <div class="hint">By AKASH SINGH</div>
+        </div>
+          <div class="security-info">
+            <p>All content is securely protected. Unauthorized access is prohibited.</p>
+        </div>
+    </div>
+    
+    <div class="fullscreen-container" id="content-container">
+        <div class="close-btn" id="close-btn">🅰️</div>
+        <iframe class="content-frame" id="content-frame"></iframe>
+    </div>
+
+    <script>
+        // DOM Elements
+        const passwordInput = document.getElementById('password');
+        const submitBtn = document.getElementById('submit-btn');
+        const messageEl = document.getElementById('message');
+        const contentContainer = document.getElementById('content-container');
+        const contentFrame = document.getElementById('content-frame');
+        const closeBtn = document.getElementById('close-btn');
+        
+        // Valid passwords
+        const validPasswords = ['85', '22'];
+        
+        // Function to display message
+        function showMessage(text, isError = true) {
+            messageEl.textContent = text;
+            messageEl.style.color = isError ? '#ff6b6b' : '#4facfe';
+            
+            if (isError) {
+                passwordInput.style.borderColor = '#ff6b6b';
+                passwordInput.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    passwordInput.style.animation = '';
+                }, 500);
+            }
+        }
+        
+        // Password validation
+        function validatePassword() {
+            const password = passwordInput.value.trim();
+            
+            if (!password) {
+                showMessage('Please enter the password');
+                return false;
+            }
+            
+            if (!validPasswords.includes(password)) {
+                showMessage('Incorrect password. Try again.');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Show content in fullscreen
+        function showContent() {
+            // Hide the password container
+            document.querySelector('.container').style.display = 'none';
+            
+            // Show the fullscreen content container
+            contentContainer.style.display = 'block';
+            
+            // Set the source of the iframe
+            contentFrame.src = 'https://studyverse-nxt-live.vercel.app/';
+            
+            // Set the title
+            document.title = 'LEARN AKASH - Secure Content';
+        }
+        
+        // Close content view
+        function closeContent() {
+            // Hide the content container
+            contentContainer.style.display = 'none';
+            
+            // Clear the iframe source
+            contentFrame.src = '';
+            
+            // Show the password container
+            document.querySelector('.container').style.display = 'block';
+            
+            // Reset the title
+            document.title = 'LEARN AKASH';
+            
+            // Clear password field
+            passwordInput.value = '';
+            messageEl.textContent = '';
+            passwordInput.focus();
+        }
+        
+        // Event listeners
+        submitBtn.addEventListener('click', () => {
+            if (validatePassword()) {
+                showContent();
+            }
+        });
+        
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                if (validatePassword()) {
+                    showContent();
+                }
+            }
+        });
+        
+        closeBtn.addEventListener('click', closeContent);
+        
+        // Add shake animation to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+                20%, 40%, 60%, 80% { transform: translateX(10px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Focus password field on load
+        window.onload = () => {
+            passwordInput.focus();
+        };
+    </script>
 </body>
 </html>
