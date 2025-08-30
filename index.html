@@ -1,444 +1,62 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Akash</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 800px;
-            margin-bottom: 20px;
-        }
-        
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .auth-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .auth-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            background: linear-gradient(145deg, #00b4db, #0083b0);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        h2 {
-            font-size: 2rem;
-            margin: 25px 0 15px;
-            color: #fdbb2d;
-        }
-        
-        .tagline {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .feature {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature i {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: #fdbb2d;
-        }
-        
-        .password-section {
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-        }
-        
-        input {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 50px;
-            width: 100%;
-            max-width: 300px;
-            margin: 15px 0;
-            font-size: 1rem;
-            text-align: center;
-            outline: none;
-        }
-        
-        button {
-            background: linear-gradient(to right, #00b4db, #0083b0);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-        
-        button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .footer {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        /* Circular Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            max-width: 90%;
-            max-height: 90%;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .circular-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 20px;
-            border: 5px solid #0083b0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .circular-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
-        
-        .countdown {
-            font-size: 1.2rem;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #0083b0;
-        }
-        
-        .owner-text {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 10px 0;
-            color: #b21f1f;
-        }
-        
-        .heceapp-badge {
-            background: linear-gradient(to right, #00b4db, #0083b0);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            margin: 15px 0;
-            display: inline-block;
-        }
-        
-        .skills-section {
-            margin: 25px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-        }
-        
-        .skills-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fdbb2d;
-        }
-        
-        .skills-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .skill {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 500;
-        }
-        
-      
-        
-        
-        
-        .code {
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #fdbb2d;
-        }
-        
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.6rem;
-            }
-            
-            .logo {
-                width: 100px;
-                height: 100px;
-                font-size: 40px;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-            }
-            
-            .circular-image {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .header {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Notice</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f6fa;
+    }
+
+    .notice-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+      color: #fff;
+      padding: 18px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: slideDown 0.8s ease-out;
+    }
+
+    .notice-banner h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .notice-banner p {
+      margin: 6px 0 0;
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    </div>
-    
-    <div class="container">
-        <div class="logo">
-            <i class="fas fa-graduation-cap"></i>
-        </div>
-        
-        <h1>LEARN AKASH</h1>
-        <p class="tagline">Expand your knowledge with the world's best learning platform</p>
-        
-        <div class="heceapp-badge">AKASH SINGH</div>
-   
-        
-   
-            
-                <div class="skill">PW</div>
-             
-                <div class="skill">Foundation</div>
-            </div>
-        </div>
 
-        </div>
-        
-        <div class="password-section">
-            <h3><i class="fas fa-lock"></i> Enter Access Code</h3>
-            <p>Please enter the password to continue</p>
-            <input type="password" id="passwordInput" placeholder="Enter password">
-            <br>
-            <button onclick="checkPassword()">Submit</button>
-        </div>
-        
-        <div class="footer">
-            <p>© 2023 Learn Akash. All rights reserved.</p>
-        </div>
-    </div>
-    
-    <!-- Modal Popup -->
-    <div class="modal" id="passwordModal">
-        <div class="modal-content">
-            <h2>Incorrect Password</h2>
-            <p>Please try again with the correct access code.</p>
-            <button onclick="closeModal()">Close</button>
-        </div>
-    </div>
-    
-    <!-- Redirect Modal with Circular Image -->
-    <div class="modal" id="redirectModal">
-        <div class="modal-content">
-            <div class="circular-image">
-                <img src="https://raw.githubusercontent.com/akashkumarsiffngh/My-imag/refs/heads/main/1731155561273.jpg" alt="Owner Image">
-            </div>
-            <div class="owner-text">WELCOME USER605285</div>
-            <p>You will be redirected.....</p>
-            <p>in <span id="countdown">5</span> seconds</p>
-        </div>
-    </div>
+  <div class="notice-banner">
+    <h2>🚨 UPDATE ALERT 🚨</h2>
+    <p>We’re adding <b>new features</b> to improve your experience.  
+       Some sections may be unavailable temporarily.  
+       Please be patient — the website will be back soon 🔥</p>
+  </div>
 
-    <script>
-        // Valid passwords
-        const validPasswords = ["bilu", "yash", "420","196","22","369"];
-        
-        // DOM Elements
-        const passwordModal = document.getElementById('passwordModal');
-        const redirectModal = document.getElementById('redirectModal');
-        const passwordInput = document.getElementById('passwordInput');
-        const countdownElement = document.getElementById('countdown');
-        
-        // Function to check password
-        function checkPassword() {
-            const enteredPassword = passwordInput.value.trim();
-            
-            if (validPasswords.includes(enteredPassword)) {
-                // Correct password - show redirect modal
-                showRedirectModal();
-            } else {
-                // Incorrect password - show error modal
-                showModal();
-            }
-        }
-        
-        // Function to show modal
-        function showModal() {
-            passwordModal.style.display = 'flex';
-        }
-        
-        // Function to close modal
-        function closeModal() {
-            passwordModal.style.display = 'none';
-            passwordInput.value = '';
-        }
-        
-        // Function to show redirect modal and start countdown
-        function showRedirectModal() {
-            redirectModal.style.display = 'flex';
-            
-            let countdown = 3;
-            countdownElement.textContent = countdown;
-            
-            const countdownInterval = setInterval(() => {
-                countdown--;
-                countdownElement.textContent = countdown;
-                
-                if (countdown <= 0) {
-                    clearInterval(countdownInterval);
-                    window.location.href = 'https://www.powerstudy.site/';
-                }
-            }, 1000);
-        }
-        
-        // Allow submitting password with Enter key
-        passwordInput.addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                checkPassword();
-            }
-        });
-        
-        // Close modal if clicked outside
-        window.addEventListener('click', function(event) {
-            if (event.target === passwordModal) {
-                closeModal();
-            }
-            if (event.target === redirectModal) {
-                redirectModal.style.display = 'none';
-            }
-        });
-        
-        // Tab functionality
-        const tabs = document.querySelectorAll('.code-tab');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-            });
-        });
-    </script>
+  <div style="margin-top:120px; padding:20px;">
+    <h1>Welcome to the Website</h1>
+    <p>Your content goes here...</p>
+  </div>
+
 </body>
 </html>
