@@ -338,11 +338,7 @@
             <div class="skills-title">Platform Skills</div>
             <div class="skills-list">
                 <div class="skill">PW</div>
-                <div class="skill">Foundation</div>
-                <div class="skill">Physics</div>
-                <div class="skill">Chemistry</div>
-                <div class="skill">Mathematics</div>
-            </div>
+                </div>
         </div>
         
         <div class="password-section">
@@ -354,7 +350,7 @@
         </div>
         
         <div class="footer">
-            <p>© 2023 Learn Akash. All rights reserved.</p>
+            <p>© 2025 Learn Akash. All rights reserved.</p>
         </div>
     </div>
     
@@ -375,7 +371,7 @@
             </div>
             <div class="owner-text">WELCOME USER605285</div>
             <p>You will be redirected.....</p>
-            <p>in <span id="countdown">5</span> seconds</p>
+            <p>in <span id="countdown">3</span> seconds</p>
         </div>
     </div>
 
@@ -388,7 +384,7 @@
             <div class="owner-text">MAINTENANCE TIME</div>
             <p>Currently it's <span id="current-time"></span></p>
             <p>Our platform is undergoing maintenance</p>
-            <p>Please try again after <span class="maintenance-time">5:00 AM</span></p>
+            <p>Please try again after 6 hour<span class="maintenance-time">5:00 AM</span></p>
             <p>New batches might be added during this time</p>
             <button onclick="closeMaintenanceModal()">Close</button>
         </div>
@@ -411,7 +407,7 @@
             const now = new Date();
             const hours = now.getHours();
             // Maintenance between 11 PM (23) and 5 AM (5)
-            return hours >= 23 || hours < 5;
+            return hours >= 21 || hours < 5;
         }
         
         // Function to format time for display
@@ -469,7 +465,7 @@
         function showRedirectModal() {
             redirectModal.style.display = 'flex';
             
-            let countdown = 3;
+            let countdown = 2;
             countdownElement.textContent = countdown;
             
             const countdownInterval = setInterval(() => {
