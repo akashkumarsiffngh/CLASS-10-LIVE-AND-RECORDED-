@@ -331,14 +331,15 @@
             flex: 0 0 auto;
             width: 160px;
             height: 280px;
-            background: #f0f0f0;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            font-weight: 500;
-            font-size: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .additional-info {
@@ -506,7 +507,7 @@
                         <i class="fas fa-star-half-alt"></i>
                     </div>
                     <span class="rating-text">4.5</span>
-                    <span class="rating-count">(12,847)</span>
+                    <span class="rating-count">(1,847)</span>
                 </div>
                 
                 <div class="download-info">
@@ -587,13 +588,20 @@
             </div>
             
             <div class="screenshots">
-                <h2 class="section-title">Screenshots</h2>
+                <h2 class="section-title">App Screenshots</h2>
                 <div class="screenshot-scroll">
-                    <div class="screenshot-item">App Dashboard</div>
-                    <div class="screenshot-item">Study Plans</div>
-                    <div class="screenshot-item">Practice Tests</div>
-                    <div class="screenshot-item">Progress Analytics</div>
-                    <div class="screenshot-item">Achievements</div>
+                    <div class="screenshot-item">
+                        <img src="https://i.ibb.co/S7wHCJ7f/21125.jpg" alt="Next Topper App Screenshot 1">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="https://i.ibb.co/bSGyRPy/21126.jpg" alt="Next Topper App Screenshot 2">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="https://i.ibb.co/d1XWRkp/21127.jpg" alt="Next Topper App Screenshot 3">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="https://i.ibb.co/JWg8bDyW/21128.jpg" alt="Next Topper App Screenshot 4">
+                    </div>
                 </div>
             </div>
             
@@ -638,7 +646,7 @@
                 </div>
                 
                 <div class="footer-links">
-                    <a href="https://akashsinghlivebth.site">Home</a>
+                    <a href="#">Home</a>
                     <a href="#">Apps</a>
                     <a href="#">About</a>
                     <a href="#">Privacy</a>
