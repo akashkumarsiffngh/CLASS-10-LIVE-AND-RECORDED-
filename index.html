@@ -3,710 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROLEX AKASH - Next Topper App</title>
+    <title>ROLEX STORE - App Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         :root {
-            --primary: #3498db;
-            --secondary: #2c3e50;
-            --accent: #e74c3c;
-            --light: #f8f9fa;
-            --dark: #2c3e50;
-            --success: #2ecc71;
-            --gray: #95a5a6;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --diwali-gold: #FFD700;
+            --diwali-orange: #FF8C00;
+            --diwali-red: #DC143C;
+            --diwali-purple: #8A2BE2;
+            --chhath-blue: #1E90FF;
+            --chhath-sky: #87CEEB;
+            --dark-bg: #0A0A2A;
+            --card-bg: rgba(255, 255, 255, 0.1);
         }
 
         body {
-            background: var(--light);
-            color: var(--dark);
+            background: linear-gradient(135deg, var(--dark-bg), #1A1A4A);
+            color: white;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        .container {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        header {
-            padding: 15px 0;
-            background: var(--card-bg);
-            box-shadow: var(--shadow);
-            position: sticky;
+        /* Festival Lights */
+        .lights {
+            position: absolute;
             top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(90deg, 
+                var(--diwali-gold), var(--diwali-orange), var(--diwali-red), 
+                var(--diwali-purple), var(--chhath-blue), var(--chhath-sky));
+            background-size: 600% 100%;
+            animation: lightAnimation 4s linear infinite;
             z-index: 100;
         }
 
-        .header-content {
+        @keyframes lightAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Diya Animation */
+        .diya {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--diwali-orange);
+            border-radius: 50% 50% 0 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .diya::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: var(--diwali-gold);
+            border-radius: 50%;
+            top: -15px;
+            left: 10px;
+            box-shadow: 0 0 15px 5px var(--diwali-gold);
+            animation: flame 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes flame {
+            0% { transform: scaleY(1); opacity: 0.8; }
+            100% { transform: scaleY(1.2); opacity: 1; }
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            margin-bottom: 20px;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: url('https://i.ibb.co/hJgw04Pt/22377.jpg') center/cover;
+            margin-right: 15px;
+            box-shadow: 0 0 20px var(--diwali-gold);
         }
 
-        .logo img {
-            height: 36px;
-            border-radius: 8px;
+        .store-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--diwali-gold), var(--diwali-orange), var(--diwali-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
-        .logo h1 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--secondary);
+        .festival-greeting {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: var(--diwali-gold);
+            text-shadow: 0 0 5px var(--diwali-orange);
         }
 
-        .nav-icons {
-            display: flex;
-            gap: 15px;
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .nav-icons i {
-            font-size: 18px;
-            color: var(--secondary);
+        .apps-section {
+            margin-top: 30px;
         }
 
-        .app-container {
-            display: flex;
-            flex-direction: column;
-            padding: 25px 0;
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--chhath-sky);
+            text-shadow: 0 0 10px var(--chhath-blue);
+        }
+
+        /* App Cards */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
         }
 
         .app-card {
             background: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            padding: 25px 20px;
-            width: 100%;
+            border-radius: 20px;
+            padding: 25px;
             text-align: center;
-            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+            border-color: var(--diwali-gold);
         }
 
         .app-icon {
-            width: 100px;
-            height: 100px;
-            background: white;
+            width: 80px;
+            height: 80px;
             border-radius: 20px;
+            margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-            padding: 12px;
-        }
-
-        .app-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 14px;
-        }
-
-        .app-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--secondary);
-        }
-
-        .app-developer {
-            color: var(--primary);
-            font-size: 15px;
-            margin-bottom: 15px;
-        }
-
-        .app-rating {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .stars {
-            color: #FFC107;
-        }
-
-        .rating-text {
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .download-info {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            color: var(--gray);
-            font-size: 13px;
-            flex-wrap: wrap;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .download-btn-container {
-            margin: 25px 0;
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--primary);
+            font-size: 2rem;
             color: white;
-            padding: 16px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 17px;
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            max-width: 280px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        .app1-icon {
+            background: linear-gradient(135deg, var(--diwali-orange), var(--diwali-red));
         }
 
-        .download-btn:active {
-            transform: translateY(0);
+        .app2-icon {
+            background: linear-gradient(135deg, var(--chhath-blue), var(--chhath-sky));
         }
 
-        .download-btn i {
-            font-size: 18px;
-        }
-
-        .download-progress {
-            margin-top: 25px;
-            width: 100%;
-            max-width: 280px;
-            display: none;
-        }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 13px;
-        }
-
-        .progress-bar {
-            height: 6px;
-            background: #e0e0e0;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--success);
-            width: 0%;
-            border-radius: 3px;
-            transition: width 0.3s;
-        }
-
-        .download-complete {
-            margin-top: 25px;
-            text-align: center;
-            background: rgba(46, 204, 113, 0.1);
-            padding: 20px;
-            border-radius: 16px;
-            display: none;
-            animation: bounceIn 0.8s ease;
-            width: 100%;
-            max-width: 280px;
-        }
-
-        .download-complete i {
-            font-size: 40px;
-            margin-bottom: 12px;
-            color: var(--success);
-        }
-
-        .download-complete h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: var(--dark);
+        .app-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
 
         .app-description {
-            background: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            padding: 25px 20px;
-            width: 100%;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 20px;
+            font-size: 0.9rem;
         }
 
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-
-        .description-text {
-            line-height: 1.6;
-            color: #555;
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
-
-        .feature-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .feature-item i {
-            color: var(--success);
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-
-        .feature-item div h3 {
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .feature-item div p {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .screenshots {
-            background: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            padding: 25px 20px;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .screenshot-scroll {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding: 10px 0;
-            scrollbar-width: none;
-        }
-
-        .screenshot-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        .screenshot-item {
-            flex: 0 0 auto;
-            width: 160px;
-            height: 280px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .screenshot-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .additional-info {
-            background: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            padding: 25px 20px;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .info-item-full {
-            margin-bottom: 12px;
-        }
-
-        .info-label {
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--secondary);
-            font-size: 14px;
-        }
-
-        .info-value {
-            color: #555;
-            font-size: 14px;
-        }
-
-        footer {
-            background: var(--secondary);
-            color: white;
-            padding: 25px 0;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
+        .app-button {
+            background: linear-gradient(to right, var(--diwali-gold), var(--diwali-orange));
+            color: var(--dark-bg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
             align-items: center;
-        }
-
-        .footer-logo {
-            margin-bottom: 15px;
-        }
-
-        .footer-logo img {
-            height: 45px;
-            border-radius: 8px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
             justify-content: center;
         }
 
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-            font-size: 14px;
+        .app-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--diwali-gold);
         }
 
-        .footer-links a:hover {
-            opacity: 0.8;
+        .app-button i {
+            margin-left: 8px;
         }
 
-        .copyright {
-            opacity: 0.7;
-            margin-top: 8px;
-            font-size: 13px;
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Animations */
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.05);
-            }
-            70% {
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .festival-wishes {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            color: var(--diwali-gold);
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 400px) {
-            .container {
-                padding: 0 10px;
+        /* Fireworks Animation */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px var(--diwali-gold);
+            z-index: -1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .store-title {
+                font-size: 2rem;
             }
             
-            .app-card, .app-description, .screenshots, .additional-info {
-                padding: 20px 15px;
-            }
-            
-            .app-title {
-                font-size: 22px;
-            }
-            
-            .download-info {
-                gap: 10px;
-            }
-            
-            .screenshot-item {
-                width: 140px;
-                height: 250px;
-            }
-            
-            .info-grid {
+            .apps-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
         }
     </style>
 </head>
 <body>
+    <!-- Festival Lights -->
+    <div class="lights"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements" id="floatingElements"></div>
+    
     <!-- Header -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="https://i.ibb.co/cn6n0yb/20900.png" alt="ROLEX AKASH Logo">
-                    <h1>ROLEX AKASH</h1>
-                </div>
-                
-                <div class="nav-icons">
-                    <i class="fas fa-search"></i>
-                    <i class="fas fa-ellipsis-v"></i>
-                </div>
-            </div>
+        <div class="logo-container">
+            <div class="logo"></div>
+            <h1 class="store-title">ROLEX STORE</h1>
         </div>
+        <p class="festival-greeting">Celebrating Diwali & Chhath Puja with Special Apps!</p>
     </header>
-
-    <!-- Main App Content -->
-    <main class="app-container">
-        <div class="container">
-            <div class="app-card">
-                <div class="app-icon">
-                    <img src="https://i.ibb.co/cn6n0yb/20900.png" alt="Next Topper App">
+    
+    <!-- Main Content -->
+    <div class="container">
+        <section class="apps-section">
+            <h2 class="section-title">Featured Apps</h2>
+            <div class="apps-grid">
+                <!-- App 1 -->
+                <div class="app-card" onclick="openApp1()">
+                    <div class="app-icon app1-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="app-name">ROLEX AKASH</h3>
+                    <p class="app-description">Experience luxury and elegance with the ROLEX AKASH app. Premium features for the discerning user.</p>
+                    <button class="app-button">Open App <i class="fas fa-external-link-alt"></i></button>
                 </div>
                 
-                <h1 class="app-title">Next Topper</h1>
-                <p class="app-developer">ROLEX AKASH</p>
-                
-                <div class="app-rating">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+                <!-- App 2 -->
+                <div class="app-card" onclick="openApp2()">
+                    <div class="app-icon app2-icon">
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <span class="rating-text">4.5</span>
-                    <span class="rating-count">(1,847)</span>
-                </div>
-                
-                <div class="download-info">
-                    <div class="info-item">
-                        <i class="fas fa-download"></i>
-                        <span>1K+ Downloads</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-user-friends"></i>
-                        <span>Rated for 3+</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-database"></i>
-                        <span>45 MB</span>
-                    </div>
-                </div>
-                
-                <div class="download-btn-container">
-                    <button class="download-btn" id="downloadBtn">
-                        <i class="fas fa-download"></i>
-                        Install
-                    </button>
-                </div>
-                
-                <div class="download-progress" id="downloadProgress">
-                    <div class="progress-info">
-                        <span>Downloading...</span>
-                        <span id="progressPercent">0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                </div>
-                
-                <div class="download-complete" id="downloadComplete">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Installation Complete!</h3>
-                    <p>Next Topper has been successfully installed on your device.</p>
+                    <h3 class="app-name">ROLEX STUDYRAYS</h3>
+                    <p class="app-description">Enhance your learning experience with ROLEX STUDYRAYS. Education meets luxury.</p>
+                    <button class="app-button">Open App <i class="fas fa-external-link-alt"></i></button>
                 </div>
             </div>
-            
-            <div class="app-description">
-                <h2 class="section-title">About this app</h2>
-                <p class="description-text">
-                    Next Topper is the ultimate learning companion for students. Ace your exams with personalized study plans, practice tests, and progress tracking. Designed to help you become the next topper in your class!
-                and password is 20+2 = 22</p>
-                
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h3>Personalized Learning</h3>
-                            <p>Study plans tailored to your needs and goals</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h3>Progress Tracking</h3>
-                            <p>Monitor your improvement with detailed analytics</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h3>Practice Tests</h3>
-                            <p>Thousands of questions with instant feedback</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h3>Expert Content</h3>
-                            <p>Created by top educators and subject matter experts</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="screenshots">
-                <h2 class="section-title">App Screenshots</h2>
-                <div class="screenshot-scroll">
-                    <div class="screenshot-item">
-                        <img src="https://i.ibb.co/S7wHCJ7f/21125.jpg" alt="Next Topper App Screenshot 1">
-                    </div>
-                    <div class="screenshot-item">
-                        <img src="https://i.ibb.co/bSGyRPy/21126.jpg" alt="Next Topper App Screenshot 2">
-                    </div>
-                    <div class="screenshot-item">
-                        <img src="https://i.ibb.co/d1XWRkp/21127.jpg" alt="Next Topper App Screenshot 3">
-                    </div>
-                    <div class="screenshot-item">
-                        <img src="https://i.ibb.co/JWg8bDyW/21128.jpg" alt="Next Topper App Screenshot 4">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="additional-info">
-                <h2 class="section-title">Additional Information</h2>
-                <div class="info-grid">
-                    <div class="info-item-full">
-                        <div class="info-label">Updated</div>
-                        <div class="info-value">October 10, 2025</div>
-                    </div>
-                    <div class="info-item-full">
-                        <div class="info-label">Version</div>
-                        <div class="info-value">1.0.3</div>
-                    </div>
-                    <div class="info-item-full">
-                        <div class="info-label">Requires Android</div>
-                        <div class="info-value">6.0 and up</div>
-                    </div>
-                    <div class="info-item-full">
-                        <div class="info-label">Offered By</div>
-                        <div class="info-value">ROLEX AKASH</div>
-                    </div>
-                    <div class="info-item-full">
-                        <div class="info-label">Category</div>
-                        <div class="info-value">Education</div>
-                    </div>
-                    <div class="info-item-full">
-                        <div class="info-label">Content Rating</div>
-                        <div class="info-value">Rated for 3+</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
+        </section>
+    </div>
+    
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="https://i.ibb.co/cn6n0yb/20900.png" alt="ROLEX AKASH Logo">
-                </div>
-                
-                <div class="footer-links">
-                    <a href="#">Home</a>
-                    <a href="#">Apps</a>
-                    <a href="#">About</a>
-                    <a href="#">Privacy</a>
-                </div>
-                
-                <p class="copyright">© 2025 ROLEX AKASH. All rights reserved.</p>
-            </div>
-        </div>
+        <p>ROLEX STORE &copy; 2023. All rights reserved.</p>
+        <p class="festival-wishes">Wishing you a Joyful Diwali and Blessed Chhath Puja!</p>
     </footer>
 
     <script>
+        // Function to open App 1
+        function openApp1() {
+            window.open('https://akashkumarsiffngh.github.io/ROLEX-AKASH-/', '_blank');
+        }
+
+        // Function to open App 2
+        function openApp2() {
+            window.open('https://akashkumarsiffngh.github.io/ROLEX_STUDYRAYS/', '_blank');
+        }
+
+        // Create floating elements
         document.addEventListener('DOMContentLoaded', function() {
-            const downloadBtn = document.getElementById('downloadBtn');
-            const downloadProgress = document.getElementById('downloadProgress');
-            const progressFill = document.getElementById('progressFill');
-            const progressPercent = document.getElementById('progressPercent');
-            const downloadComplete = document.getElementById('downloadComplete');
+            const floatingElements = document.getElementById('floatingElements');
+            const symbols = ['🪔', '🌟', '💎', '📱', '🎆', '🕉️', '☀️'];
             
-            downloadBtn.addEventListener('click', function() {
-                // Show download progress
-                downloadProgress.style.display = 'block';
-                downloadComplete.style.display = 'none';
-                downloadBtn.disabled = true;
-                downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Installing';
-                
-                // Simulate download progress
-                let progress = 0;
-                const interval = setInterval(() => {
-                    progress += Math.random() * 15;
-                    if (progress >= 100) {
-                        progress = 100;
-                        clearInterval(interval);
-                        
-                        // Show complete message after a short delay
-                        setTimeout(() => {
-                            downloadProgress.style.display = 'none';
-                            downloadComplete.style.display = 'block';
-                            
-                            // Actually download the file after showing animation
-                            setTimeout(() => {
-                                const link = document.createElement('a');
-                                link.href = 'https://github.com/akashkumarsiffngh/Next_topper2/releases/download/V1.0/_ROLEX_AKASH_19178003.1.apk';
-                                link.download = 'ROLEX_AKASH_Next_Topper.apk';
-                                document.body.appendChild(link);
-                                link.click();
-                                document.body.removeChild(link);
-                                
-                                // Reset button after download
-                                setTimeout(() => {
-                                    downloadBtn.disabled = false;
-                                    downloadBtn.innerHTML = '<i class="fas fa-download"></i> Install';
-                                }, 2000);
-                            }, 1500);
-                        }, 800);
-                    }
-                    
-                    progressFill.style.width = `${progress}%`;
-                    progressPercent.textContent = `${Math.round(progress)}%`;
-                }, 300);
-            });
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                element.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                element.style.fontSize = `${Math.random() * 20 + 15}px`;
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                floatingElements.appendChild(element);
+            }
+
+            // Create diyas
+            for (let i = 0; i < 5; i++) {
+                const diya = document.createElement('div');
+                diya.classList.add('diya');
+                diya.style.left = `${Math.random() * 100}%`;
+                diya.style.bottom = '0';
+                document.body.appendChild(diya);
+            }
         });
     </script>
 </body>
