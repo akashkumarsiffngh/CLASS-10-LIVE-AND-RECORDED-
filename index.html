@@ -1,42 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maintenance Notice</title>
-  <style>
-    body {
-      background-color: #f5f6fa;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      color: #2f3640;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 1.1rem;
-      max-width: 500px;
-      line-height: 1.5;
-    }
-    .icon {
-      font-size: 60px;
-      color: #e1b12c;
-      margin-bottom: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROLEX STORE - App Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --diwali-gold: #FFD700;
+            --diwali-orange: #FF8C00;
+            --diwali-red: #DC143C;
+            --diwali-purple: #8A2BE2;
+            --chhath-blue: #1E90FF;
+            --chhath-sky: #87CEEB;
+            --dark-bg: #0A0A2A;
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark-bg), #1A1A4A);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Festival Lights */
+        .lights {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(90deg, 
+                var(--diwali-gold), var(--diwali-orange), var(--diwali-red), 
+                var(--diwali-purple), var(--chhath-blue), var(--chhath-sky));
+            background-size: 600% 100%;
+            animation: lightAnimation 4s linear infinite;
+            z-index: 100;
+        }
+
+        @keyframes lightAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Diya Animation */
+        .diya {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--diwali-orange);
+            border-radius: 50% 50% 0 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .diya::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: var(--diwali-gold);
+            border-radius: 50%;
+            top: -15px;
+            left: 10px;
+            box-shadow: 0 0 15px 5px var(--diwali-gold);
+            animation: flame 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes flame {
+            0% { transform: scaleY(1); opacity: 0.8; }
+            100% { transform: scaleY(1.2); opacity: 1; }
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: url('https://i.ibb.co/hJgw04Pt/22377.jpg') center/cover;
+            margin-right: 15px;
+            box-shadow: 0 0 20px var(--diwali-gold);
+        }
+
+        .store-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--diwali-gold), var(--diwali-orange), var(--diwali-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .festival-greeting {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: var(--diwali-gold);
+            text-shadow: 0 0 5px var(--diwali-orange);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .apps-section {
+            margin-top: 30px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--chhath-sky);
+            text-shadow: 0 0 10px var(--chhath-blue);
+        }
+
+        /* App Cards */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .app-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+            border-color: var(--diwali-gold);
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .app1-icon {
+            background: linear-gradient(135deg, var(--diwali-orange), var(--diwali-red));
+        }
+
+        .app2-icon {
+            background: linear-gradient(135deg, var(--chhath-blue), var(--chhath-sky));
+        }
+
+        .app-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .app-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .app-button {
+            background: linear-gradient(to right, var(--diwali-gold), var(--diwali-orange));
+            color: var(--dark-bg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--diwali-gold);
+        }
+
+        .app-button i {
+            margin-left: 8px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .festival-wishes {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            color: var(--diwali-gold);
+        }
+
+        /* Fireworks Animation */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px var(--diwali-gold);
+            z-index: -1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .store-title {
+                font-size: 2rem;
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-  <div class="icon">🔧</div>
-  <h1>Scheduled Maintenance</h1>
-  <p>Our website is temporarily unavailable for maintenance.<br>
-  We’ll be back online within <strong>24 hours</strong>.<br>
-  Thank you for your patience and understanding!</p>
+    <!-- Festival Lights -->
+    <div class="lights"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements" id="floatingElements"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <div class="logo"></div>
+            <h1 class="store-title">ROLEX STORE</h1>
+        </div>
+        <p class="festival-greeting">Celebrating Diwali & Chhath Puja with Special Apps!</p>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <section class="apps-section">
+            <h2 class="section-title">Featured Apps</h2>
+            <div class="apps-grid">
+                <!-- App 1 -->
+                <div class="app-card" onclick="openApp1()">
+                    <div class="app-icon app1-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="app-name">ROLEX AKASH</h3>
+                    <p class="app-description">Experience luxury and elegance with the ROLEX AKASH app. Premium features for the discerning user.</p>
+                    <button class="app-button">Open App <i class="fas fa-external-link-alt"></i></button>
+                </div>
+                
+                <!-- App 2 -->
+                <div class="app-card" onclick="openApp2()">
+                    <div class="app-icon app2-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="app-name">ROLEX STUDYRAYS</h3>
+                    <p class="app-description">Enhance your learning experience with ROLEX STUDYRAYS. Education meets luxury.</p>
+                    <button class="app-button">Open App <i class="fas fa-external-link-alt"></i></button>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>ROLEX STORE &copy; 2023. All rights reserved.</p>
+        <p class="festival-wishes">Wishing you a Joyful Diwali and Blessed Chhath Puja!</p>
+    </footer>
+
+    <script>
+        // Function to open App 1
+        function openApp1() {
+            window.open('https://akashkumarsiffngh.github.io/ROLEX-AKASH-/', '_blank');
+        }
+
+        // Function to open App 2
+        function openApp2() {
+            window.open('https://akashkumarsiffngh.github.io/ROLEX_STUDYRAYS/', '_blank');
+        }
+
+        // Create floating elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingElements = document.getElementById('floatingElements');
+            const symbols = ['🪔', '🌟', '💎', '📱', '🎆', '🕉️', '☀️'];
+            
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                element.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                element.style.fontSize = `${Math.random() * 20 + 15}px`;
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                floatingElements.appendChild(element);
+            }
+
+            // Create diyas
+            for (let i = 0; i < 5; i++) {
+                const diya = document.createElement('div');
+                diya.classList.add('diya');
+                diya.style.left = `${Math.random() * 100}%`;
+                diya.style.bottom = '0';
+                document.body.appendChild(diya);
+            }
+        });
+    </script>
 </body>
 </html>
